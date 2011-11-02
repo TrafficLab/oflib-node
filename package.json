@@ -1,0 +1,33 @@
+{
+    "name" : "node-oflib",
+    "version" : "0.1.0",
+    "description" : "A module for conversion between OpenFlow wire protocol messages and JSON objects.",
+    "keywords": ["OpenFlow", "JSON"],
+    "author" : {
+        "name" : "Zoltán Lajos Kis",
+        "email" : "zoltan.lajos.kis@ericsson.com"
+    },
+    "maintainers" : [
+        {
+            "name" : "Zoltán Lajos Kis",
+            "email" : "zoltan.lajos.kis@ericsson.com"
+        }
+    ],
+    "licenses" : [
+        {"type" : "BSD"}
+    ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/TrafficLab/oflib-node.git"
+        }
+    ],
+    "dependencies" : {
+    },
+    "directories" : {
+        "lib" : "./lib",
+        "test" : "./test"
+    },
+    "main" : "./index.js",
+    "engines" : {"node" : ">=0.4.12"}
+}
