@@ -1,0 +1,17 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_action_set_mpls_tc"
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_action_header.json"},  /* OFPAT_SET_MPLS_TC */
+    "properties" : [
+        "mpls_tc" : {                          /* MPLS TC. */
+            "type" : "number",
+            "minimum" : 0x00,
+            "maximum" : 0xff,
+            "required" : true
+        }
+    ]
+}

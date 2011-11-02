@@ -1,0 +1,15 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_stats_request"
+    "type" : "object",
+    "extends" : {"$ref" : "../ofp_header.json"},     /* OFPT_STATS_REQUEST */
+    "properties" : [
+        "stat_type" : {
+            "extends" : {"$ref" : "../../constants/ofp_stats_types.json"},
+            "required" : true
+        }
+    ]
+}

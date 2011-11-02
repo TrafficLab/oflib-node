@@ -1,0 +1,15 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+/* Action header that is common to all actions. */
+{
+    "id" : "ofp_action_header",
+    "type" : "object",
+    "properties" : [
+        "type" : {
+            "extends" : {"$ref" : "ofp_action_type"},
+            "required" : true
+        }
+    ]
+}

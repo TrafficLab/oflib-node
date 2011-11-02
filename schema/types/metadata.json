@@ -1,0 +1,10 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "metadata",
+    "extends" : {"$ref" : "./binary.json"},
+    "minLength" : 16,
+    "maxLength" : 16
+}

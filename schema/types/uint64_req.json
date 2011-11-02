@@ -1,0 +1,9 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "uint64_req",
+    "extends" : {"$ref" : "./uint64.json"},
+    "required" : true
+}

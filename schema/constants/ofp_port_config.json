@@ -1,0 +1,15 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_port_config",
+    "type" : "string",
+    "enum" : [
+        "OFPPC_PORT_DOWN",     /* Port is administratively down. */
+
+        "OFPPC_NO_RECV",       /* Drop all packets received by port. */
+        "OFPPC_NO_FWD",        /* Drop packets forwarded to port. */
+        "OFPPC_NO_PACKET_IN"   /* Do not send packet-in msgs for port. */
+    ]
+}

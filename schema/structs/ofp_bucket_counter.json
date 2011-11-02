@@ -1,0 +1,12 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_bucket_counter",
+    "type" : "object",
+    "properties" : [
+        "packet_count" : {"$ref" : "../types/int64_req.json"},   /* Number of packets processed by bucket. */
+        "byte_count" : {"$ref" : "../types/int64_req.json",      /* Number of bytes processed by bucket. */
+    ]
+}

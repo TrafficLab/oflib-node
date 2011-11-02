@@ -1,0 +1,18 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_instruction_apply_actions",
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_instrution.json"},    /* OFPIT_APPLY_ACTIONS */
+    "properties" : [
+        "actions" : {                          /* Actions associated with the instruction */
+            "type" : "array",
+            "items" : {"$ref" : "../actions/ofp_action_header.json"},
+            "uniqueItems" : true,
+            "required" : true
+        }
+    ]
+}
+

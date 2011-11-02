@@ -1,0 +1,63 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_port",
+    "type" : "object",
+    "properties" : [
+        "port_no" : {"$ref" : "../types/port_id.json"},
+        "hw_addr" : {
+            "extends" : {"$ref" : "../types/ethernet_addr.json"},
+            "required" : true
+        },
+        "name" : {
+            "type" : "string",
+            "maxLength" : 16, /* OFP_MAX_PORT_NAME_LEN */
+            "required" : true
+        },
+        "config" : {
+            "type" : "array",
+            "items" : {"$ref" : "../constants/ofp_port_config.json"},
+            "uniqueItems" : true,
+            "required" : true
+        },
+        "state" : {
+            "type" : "array",
+            "items" : {"$ref" : "../constants/ofp_port_stats.json"},
+            "uniqueItems" : true,
+            "required" : true
+        },
+
+        "curr" : {          /* Current features. */
+            "type" : "array",
+            "items" : {"$ref" : "../constants/ofp_port_features.json"},
+            "uniqueItems" : true,
+            "required" : true
+
+        },
+        "advertised" : {    /* Features being advertised by the port. */
+            "type" : "array",
+            "items" : {"$ref" : "../constants/ofp_port_features.json"},
+            "uniqueItems" : true,
+            "required" : true
+
+        },
+        "supported" : {     /* Features supported by the port. */
+            "type" : "array",
+            "items" : {"$ref" : "../constants/ofp_port_features.json"},
+            "uniqueItems" : true,
+            "required" : true
+
+        },
+        "peer" : {          /* Features advertised by peer. */
+            "type" : "array",
+            "items" : {"$ref" : "../constants/ofp_port_features.json"},
+            "uniqueItems" : true,
+            "required" : true
+
+        },
+        "curr_speed" : {"$ref" : "uint32_req"},   /* Current port bitrate in kbps. */
+        "max_speed" : {"$ref" : "uint32_req"}     /* Max port bitrate in kbps */
+    ]
+}

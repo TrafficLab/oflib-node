@@ -1,0 +1,16 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_instruction_write_metadata",
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_instrution.json"},    /* OFPIT_WRITE_METADATA */
+    "properties" : [
+        "metadata" : {"$ref" : "../types/metadata_req.json"},        /* Metadata value to write */
+        "mask" : {                                                   /* Metadata write bitmask */
+            "metadata" : {"$ref" : "../types/metadata.json"},
+            "description" : "if not present, no masking is applied"
+        }
+    ]
+}

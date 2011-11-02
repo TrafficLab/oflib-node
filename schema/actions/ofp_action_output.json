@@ -1,0 +1,24 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+/* Action structure for OFPAT_OUTPUT, which sends packets out 'port'.
+ * When the 'port' is the OFPP_CONTROLLER, 'max_len' indicates the max
+ * number of bytes to send.  A 'max_len' of zero means no bytes of the
+ * packet should be sent.*/
+{
+    "id" : "ofp_action_output"
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_action_header.json"},  /* OFPAT_OUTPUT */
+    "properties" : [
+        "port" : {                              /* Output port. */
+            "type" : [{"$ref" : "../types/port_id.json"},
+                      {"$ref" : "../constants/ofp_port_no.json"}]
+            "required" : true
+        },
+        "max_len" : {  /* Max length to send to controller. */
+            "extends" : {"$ref" : "../types/uint16.json"},
+            "description" : "only required for OFPP_CONTROLLER port"
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "buffer_id_req"
+    "extends" : {"$ref" : "./buffer_id.json"},
+    "required" : true
+}

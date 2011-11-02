@@ -1,0 +1,32 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_bucket",
+    "type" : "object",
+    "properties" : [
+        "weight" : {                /* Relative weight of bucket.  Only
+                                       defined for select groups. */
+            "extends" : {"$ref", "../types/uint32.json"},
+            "description" : "if not present, weight is undefined, i.e. 0"
+        },
+        "watch_port" : {            /* Port whose state affects whether this
+                                       bucket is live.  Only required for fast
+                                       failover groups. */
+            "extends" : {"$ref" : "../types/port_id.json"},
+            "description" : "if not present, no port is watched"
+        },
+        "watch_group" : {           /* Group whose state affects whether this
+                                       bucket is live.  Only required for fast
+                                       failover groups. */
+            "extends" : {"$ref" : "../types/group_id.json"},
+            "description" : "if not present, no group is watched"
+        },
+        "actions" : {
+            "type" : "array",
+            "items" : {"$ref" : "../actions/ofp_action_header.json"},
+            "required" : true
+        }
+    ]
+}

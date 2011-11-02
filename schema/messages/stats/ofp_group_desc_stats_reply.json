@@ -1,0 +1,17 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_group_desc_stats_reply",
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_stats_reply.json"},    /* OFPST_GROUP_DESC */
+    "properties" : [
+        "stats" : {
+            "type" : "array",
+            "items" : {"$ref" : "../../structs/ofp_group_desc_stats.json"},
+            "uniqueItems" : true
+            "required" : true
+        }
+    ]
+}

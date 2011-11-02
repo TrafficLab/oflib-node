@@ -1,0 +1,17 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_flow_mod_command",
+    "type" : "string",
+    "enum" : [
+        "OFPFC_ADD",              /* New flow. */
+        "OFPFC_MODIFY",           /* Modify all matching flows. */
+        "OFPFC_MODIFY_STRICT",    /* Modify entry strictly matching wildcards and
+                                     priority. */
+        "OFPFC_DELETE",           /* Delete all matching flows. */
+        "OFPFC_DELETE_STRICT"     /* Delete entry strictly matching wildcards and
+                                     priority. */
+    ]
+}

@@ -1,0 +1,18 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_queue_get_config_reply",
+    "type" : "object",
+    "extends" : {"$ref" : "ofp_header"},  /* OFPT_QUEUE_GET_CONFIG_REPLY */
+    "properties" : [
+        "port" : {"$ref" : "../types/port_id_req.json"},
+        "queues" : {
+            "type" : "array",
+            "items" : {"$ref" : "../structs/ofp_packet_queue.json"},
+            "uniqueItems" : true,
+            "required" : true
+        }
+    ]
+}

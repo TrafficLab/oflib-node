@@ -1,0 +1,11 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_queue_properties",
+    "type" : "string",
+    "enum" : [
+        "OFPQT_MIN_RATE"       /* Minimum datarate guaranteed. */
+    ]
+}

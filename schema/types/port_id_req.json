@@ -1,0 +1,9 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "port_id_req",
+    "extends" : {"$ref" : "./port_id.json"},
+    "required" : true
+}

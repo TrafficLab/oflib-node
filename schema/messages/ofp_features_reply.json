@@ -1,0 +1,32 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_features_reply",
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_header.json"}   /* OFPT_FEATURES_REPLY */
+    "properties" : [
+        "datapath_id" : {
+            "extends" : {"$ref" : "../types/binary_req.json"},
+            "minLength" : 16,
+            "maxLength" : 16
+        },
+        "n_buffers" : {"$ref" : "../types/uint32_req.json"},  /* Max packets buffered at once. */
+        "n_tables" : {"$ref" : "../types/uint8_req.json"},    /* Number of tables supported by datapath. */
+
+        /* Features. */
+        "capabilities" : {
+            "type" : "array",
+            "items" : {"$ref" : "../constants/ofp_capabilities.json"},
+            "uniqueItems" : true,
+            "required" : true
+        },
+        "ports" : {
+            "type" : "array",
+            "items" : {"$ref" : "../structs/ofp_port.json"},
+            "uniqueItems" : true,
+            "required" : true
+        }
+    ]
+}

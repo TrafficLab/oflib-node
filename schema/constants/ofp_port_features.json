@@ -1,0 +1,27 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_port_features",
+    "type" : "string",
+    "enum" : [
+        "OFPPF_10MB_HD",      /* 10 Mb half-duplex rate support. */
+        "OFPPF_10MB_FD",      /* 10 Mb full-duplex rate support. */
+        "OFPPF_100MB_HD",     /* 100 Mb half-duplex rate support. */
+        "OFPPF_100MB_FD",     /* 100 Mb full-duplex rate support. */
+        "OFPPF_1GB_HD",      /* 1 Gb half-duplex rate support. */
+        "OFPPF_1GB_FD",      /* 1 Gb full-duplex rate support. */
+        "OFPPF_10GB_FD",     /* 10 Gb full-duplex rate support. */
+        "OFPPF_40GB_FD",     /* 40 Gb full-duplex rate support. */
+        "OFPPF_100GB_FD",    /* 100 Gb full-duplex rate support. */
+        "OFPPF_1TB_FD",      /* 1 Tb full-duplex rate support. */
+        "OFPPF_OTHER",       /* Other rate, not in the list. */
+
+        "OFPPF_COPPER",      /* Copper medium. */
+        "OFPPF_FIBER",       /* Fiber medium. */
+        "OFPPF_AUTONEG",     /* Auto-negotiation. */
+        "OFPPF_PAUSE",       /* Pause. */
+        "OFPPF_PAUSE_ASYM"   /* Asymmetric pause. */
+    ]
+}

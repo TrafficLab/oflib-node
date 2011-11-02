@@ -1,0 +1,76 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_flow_mod",
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_header.json"},     /* OFPT_FLOW_MOD */
+    "properties" : [
+        "cookie" : {                        /* Opaque controller-issued identifier. */
+            "extends" : {"$ref" : "../types/cookie.json"},
+            "description" : "if not present, value is 0x0000000000000000"
+        }
+        "cookie_mask" : {        /* Mask used to restrict the cookie bits
+                                    that must match when the command is
+                                    OFPFC_MODIFY* or OFPFC_DELETE*. A value
+                                    of 0 indicates no restriction. */
+            "extends" : {"$ref" : "../types/cookie.json"},
+            "description" : "if not present, no masking is applied"
+        }
+        /* Flow actions. */
+        "table_id" : {             /* ID of the table to put the flow in */
+            "extends" : {"$ref" : "../types/uint8.json"},
+            "description" : "required for ADD, otherwise if missing does not filter on tables"
+        },
+        "command" : {
+            "extends" : {"$ref" : "../constants/ofp_flow_mod_command.json"},
+            "required" : true
+        },
+        "idle_timeout" : {        /* Idle time before discarding (seconds). */
+            "extends" : {"$ref" : "../types/uint16.json"},
+            "description", "if not present, idle_timeout is disabled"
+        },
+        "hard_timeout" : {        /* Max time before discarding (seconds). */
+            "extends" : {"$ref" : "../types/uint16.json"},
+            "description", "if not present, hard_timeout is disabled"
+        },
+        "priority" : {            /* Priority level of flow entry. */
+            "extends" : {"$ref" : "../types/uint16.json"},
+            "required" : true
+        },
+        "buffer_id" : {           /* Buffered packet to apply to.
+                                     Not meaningful for OFPFC_DELETE*. */
+            "extends" : {"$ref" : "../types/buffer_id.json"},
+            "descripton" : "if not present no buffer is selected"
+        },
+        "out_port" : {            /* For OFPFC_DELETE* commands, require
+                                     matching entries to include this as an
+                                     output port. */
+            "extends" : {"$ref" : "../types/port_id.json"},
+            "description" : "if not present, no filtering on output port"
+        }
+        "out_group" : {           /* For OFPFC_DELETE* commands, require
+                                     matching entries to include this as an
+                                     output group. */
+            "extends" : {"$ref" : "../types/group_id.json"},
+            "description" : "if not present, no filtering on output group"
+        },
+        "flags" : {
+            "type" : "array",
+            "items" : {"$ref" : "../constants/ofp_flow_mod_flags.json"},
+            "uniqueItems" : true,
+            "required" : true
+        },
+        "match" : {
+            "extends" : {"$ref" : "../structs/ofp_match_header.json"},
+            "required" : true
+        }
+        "instructions" : {
+            "type" : "array",
+            "items" : {"$ref" : "../instructions/ofp_instruction.json"},
+            "uniqueItems" : true,
+            "required" : true
+        }
+    ]
+}

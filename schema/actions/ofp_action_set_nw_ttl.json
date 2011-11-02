@@ -1,0 +1,12 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_action_set_nw_ttl"
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_action_header.json"},  /* OFPAT_SET_NW_TTL */
+    "properties" : [
+        "ip_ttl" : {"$ref" : "../types/uint8_req.json"}   /* IP TTL. */
+    ]
+}

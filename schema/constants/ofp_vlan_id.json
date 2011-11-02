@@ -1,0 +1,17 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+/* The VLAN id is 12-bits, so we can use the entire 16 bits to indicate
+ * special conditions.
+ */
+{
+    "id" : "ofp_vlan_id",
+    "type" : "string",
+    "enum" : [
+        "OFPVID_ANY",     /* Indicate that a VLAN id is set but don't care
+                             about it's value. Note: only valid when specifying
+                             the VLAN id in a match */
+        "OFPVID_NONE"     /* No VLAN id was set. */
+    ]
+}

@@ -1,0 +1,25 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_flow_match_fields",
+    "type" : "string",
+    "enum" : [
+        "OFPFMF_IN_PORT",     /* Switch input port. */
+        "OFPFMF_DL_VLAN",     /* VLAN id. */
+        "OFPFMF_DL_VLAN_PCP", /* VLAN priority. */
+        "OFPFMF_DL_TYPE",     /* Ethernet frame type. */
+        "OFPFMF_NW_TOS",      /* IP ToS (DSCP field, 6 bits). */
+        "OFPFMF_NW_PROTO",    /* IP protocol. */
+        "OFPFMF_TP_SRC",      /* TCP/UDP/SCTP source port. */
+        "OFPFMF_TP_DST",      /* TCP/UDP/SCTP destination port. */
+        "OFPFMF_MPLS_LABEL",  /* MPLS label. */
+        "OFPFMF_MPLS_TC",     /* MPLS TC. */
+        "OFPFMF_DL_SRC",      /* Ethernet source address. */
+        "OFPFMF_DL_DST",      /* Ethernet destination address. */
+        "OFPFMF_NW_SRC",      /* IP source address. */
+        "OFPFMF_NW_DST",      /* IP destination address. */
+        "OFPFMF_METADATA"     /* Metadata passed between tables. */
+    ]
+}

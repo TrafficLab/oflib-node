@@ -1,0 +1,17 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_capabilities",
+    "type" : "string",
+    "enum" : [
+        "OFPC_FLOW_STATS",    /* Flow statistics. */
+        "OFPC_TABLE_STATS",   /* Table statistics. */
+        "OFPC_PORT_STATS",    /* Port statistics. */
+        "OFPC_GROUP_STATS",   /* Group statistics. */
+        "OFPC_IP_REASM",      /* Can reassemble IP fragments. */
+        "OFPC_QUEUE_STATS",   /* Queue statistics. */
+        "OFPC_ARP_MATCH_IP"   /* Match IP addresses in ARP pkts. */
+    ]
+}

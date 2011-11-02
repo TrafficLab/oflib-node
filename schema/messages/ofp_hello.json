@@ -1,0 +1,9 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_hello",
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_header.json"}   /* OFPT_HELLO */
+}

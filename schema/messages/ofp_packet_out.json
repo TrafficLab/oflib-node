@@ -1,0 +1,30 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_packet_out",
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_header.json"},   /* OFPT_PACKET_OUT */
+    "properties" : [
+        "buffer_id" : {   /* ID assigned by datapath (-1 if none). */
+            "extends" : {"$ref" : "../types/buffer_id.json"},
+            "description" : "unset if no buffer is used"
+        }
+        "in_port" : {             /* Packet's input port or OFPP_CONTROLLER. */
+            "type" : [{"$ref" : "../types/port_id.json"},
+                      {"$ref" : "../constants/ofp_port_no.json"}]
+            "required" : true
+        },
+        "actions" : {  /* Action list. */
+            "type" : "array",
+            "items" : {"$ref" : "ofp_action_header"},
+            "required" : true
+        },
+        "data" : {      /* Packet data.  (Only meaningful if buffer_id == -1.) */
+            "type" : {"$ref" : "../types/binary.json"},
+            "descrption" : "only meaningful if buffer_id was not set"
+        }
+    ]
+}
+

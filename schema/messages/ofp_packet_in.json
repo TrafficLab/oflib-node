@@ -1,0 +1,27 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_packet_in",
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_header.json"}   /* OFPT_PACKET_IN */
+    "properties" : [
+        "buffer_id" : {
+            "extends" : {"$ref" : "../types/buffer_id.json"},
+            "description" : "if not present, packet is not buffered"
+        },
+        "in_port" : {"$ref" : "../types/port_id_req.json"},           /* Port on which frame was received. */
+        "in_phy_port" :        /* Physical Port on which frame was received. */
+            "extends" : {"$ref" : "../types/port_id.json"},
+            "description" : "only present, if different from in_port"
+        },
+        "total_len" : {"$ref" : "../types/uint16_req.json"},         /* Full length of frame. */
+        "reason" : {           /* Reason packet is being sent (one of OFPR_*) */
+            "extends" : {"$ref" : "../constants/ofp_packet_in_reason.json"},
+            "required" : true
+        },
+        "table_id" : {"$ref" : "../types/uint8_req.json"},        /* ID of the table that was looked up */
+        "data" : {"$ref" : "../types/binary_req.json"}            /* Ethernet frame */
+    ]
+}

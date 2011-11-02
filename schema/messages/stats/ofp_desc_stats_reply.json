@@ -1,0 +1,36 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_desc_stats_reply"
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_stats_reply.json"},   /* OFPST_DESC */
+    "properties" : [
+        "mfr_desc" : {            /* Manufacturer description. */
+            "type" : "string",
+            "maxLength" : 255  /* DESC_STR_LEN */
+            "required" : true
+        },
+        "hw_desc" : {        /* Hardware description. */
+            "type" : "string",
+            "maxLength" : 255  /* DESC_STR_LEN */
+            "required" : true
+        },
+        "sw_desc" : {        /* Software description. */
+            "type" : "string",
+            "maxLength" : 255  /* DESC_STR_LEN */
+            "required" : true
+        },
+        "serial_num" : {   /* Serial number. */
+            "type" : "string",
+            "maxLength" : 31  /* SERIAL_NUM_LEN */
+            "required" : true
+        },
+        "dp_desc" : {        /* Human readable description of datapath. */
+            "type" : "string",
+            "maxLength" : 255  /* DESC_STR_LEN */
+            "required" : true
+        }
+    ]
+}

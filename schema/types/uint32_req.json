@@ -1,0 +1,9 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "uint32_req",
+    "extends" : {"$ref" : "./uint32.json"},
+    "required" : true
+}

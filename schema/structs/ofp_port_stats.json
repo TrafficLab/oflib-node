@@ -1,0 +1,65 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_port_stats",
+    "type" : "object",
+    "properties" : [
+        "port_no" : {"$ref" : "../types/port_id_req.json"},
+        "rx_packets" : {     /* Number of received packets. */
+            "extends" : {"$ref" : "../types/uint64.json"},
+            "description" : "if not present, counter is not supported"
+        },
+        "tx_packets" : {     /* Number of transmitted packets. */
+            "extends" : {"$ref" : "../types/uint64.json"},
+            "description" : "if not present, counter is not supported"
+        },
+        "rx_bytes" : {       /* Number of received bytes. */
+            "extends" : {"$ref" : "../types/uint64.json"},
+            "description" : "if not present, counter is not supported"
+        },
+        "tx_bytes" : {       /* Number of transmitted bytes. */
+            "extends" : {"$ref" : "../types/uint64.json"},
+            "description" : "if not present, counter is not supported"
+        },
+        "rx_dropped" : {     /* Number of packets dropped by RX. */
+            "extends" : {"$ref" : "../types/uint64.json"},
+            "description" : "if not present, counter is not supported"
+        },
+        "tx_dropped" : {     /* Number of packets dropped by TX. */
+            "extends" : {"$ref" : "../types/uint64.json"},
+            "description" : "if not present, counter is not supported"
+        },
+        "rx_errors" : {      /* Number of receive errors.  This is a super-set
+                                of more specific receive errors and should be
+                                greater than or equal to the sum of all
+                                rx_*_err values. */
+            "extends" : {"$ref" : "../types/uint64.json"},
+            "description" : "if not present, counter is not supported"
+        },
+        "tx_errors" : {      /* Number of transmit errors.  This is a super-set
+                                of more specific transmit errors and should be
+                                greater than or equal to the sum of all
+                                tx_*_err values (none currently defined.) */
+            "extends" : {"$ref" : "../types/uint64.json"},
+            "description" : "if not present, counter is not supported"
+        },
+        "rx_frame_err" : {   /* Number of frame alignment errors. */
+            "extends" : {"$ref" : "../types/uint64.json"},
+            "description" : "if not present, counter is not supported"
+        },
+        "rx_over_err" : {    /* Number of packets with RX overrun. */
+            "extends" : {"$ref" : "../types/uint64.json"},
+            "description" : "if not present, counter is not supported"
+        },
+        "rx_crc_err" : {     /* Number of CRC errors. */
+            "extends" : {"$ref" : "../types/uint64.json"},
+            "description" : "if not present, counter is not supported"
+        },
+        "collisions" : {     /* Number of collisions. */
+            "extends" : {"$ref" : "../types/uint64.json"},
+            "description" : "if not present, counter is not supported"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "uint8"
+    "type" : "number",
+    "minimum" : 0,
+    "maximum" : 0xff
+}

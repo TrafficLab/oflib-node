@@ -1,0 +1,25 @@
+/*
+ * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
+ */
+
+{
+    "id" : "ofp_group_mod",
+    "type" : "object",
+    "extends" : {"$ref" : "./ofp_header.json"},     /* OFPT_GROUP_MOD */
+    "properties" : [
+        "command" : {
+            "extends" : {"$ref" : "../constants/ofp_group_mod_command.json"},
+            "required" : true
+        },
+        "group_type" : {
+            "extends" : {"$ref" : "../constants/ofp_group_type.json"},
+            "required" : true
+        },
+        "group_id" : {"$ref" : "../types/group_id_req.json"},
+        "buckets" : {
+            "type" : "array",
+            "items" : {"$ref" : "../structs/ofp_bucket.json"},
+            "required" : true
+        }
+    ]
+}
