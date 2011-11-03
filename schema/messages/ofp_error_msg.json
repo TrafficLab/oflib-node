@@ -7,11 +7,11 @@
     "type" : "object",
     "extends" : {"$ref" : "./ofp_header.json"},     /* OFPT_ERROR */
     "properties" : [
-        "type" : {
+        "error_type" : {
             "extends" : {"$ref" : "../constants/ofp_error_type.json"}
             "required" : true
         },
-        "code" : {
+        "error_code" : {
             "extends" : {"$ref" : "../constants/ofp_error_code.json"}
             "required" : true
         },

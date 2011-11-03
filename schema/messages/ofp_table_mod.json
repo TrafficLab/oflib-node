@@ -7,7 +7,7 @@
     "type" : "object",
     "extends" : {"$ref" : "./ofp_header.json"},
     "properties" : [
-        "tabl_id" : {
+        "table_id" : {
             "type" : {"$ref" : "../types/uint8.json"},
             "description" : "if not present indicates all tables"
         },

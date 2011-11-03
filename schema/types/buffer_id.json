@@ -4,6 +4,7 @@
 
 {
     "id" : "buffer_id",
-    "type" : "string",
-    "pattern" : "^[A-Fa-f0-9]{7}[A-Ea-e-9]$"
+    "type" : "number",
+    "minimum" : 0,
+    "maximum" : 0xfffffffe
 }
