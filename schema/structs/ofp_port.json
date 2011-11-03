@@ -33,29 +33,26 @@
             "type" : "array",
             "items" : {"$ref" : "../constants/ofp_port_features.json"},
             "uniqueItems" : true,
-            "required" : true
+            "description" : "if not present, unavailable"
 
         },
         "advertised" : {    /* Features being advertised by the port. */
             "type" : "array",
             "items" : {"$ref" : "../constants/ofp_port_features.json"},
             "uniqueItems" : true,
-            "required" : true
-
+            "description" : "if not present, unavailable"
         },
         "supported" : {     /* Features supported by the port. */
             "type" : "array",
             "items" : {"$ref" : "../constants/ofp_port_features.json"},
             "uniqueItems" : true,
-            "required" : true
-
+            "description" : "if not present, unavailable"
         },
         "peer" : {          /* Features advertised by peer. */
             "type" : "array",
             "items" : {"$ref" : "../constants/ofp_port_features.json"},
             "uniqueItems" : true,
-            "required" : true
-
+            "description" : "if not present, unavailable"
         },
         "curr_speed" : {"$ref" : "uint32_req"},   /* Current port bitrate in kbps. */
         "max_speed" : {"$ref" : "uint32_req"}     /* Max port bitrate in kbps */
