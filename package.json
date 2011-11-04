@@ -1,5 +1,5 @@
 {
-    "name" : "node-oflib",
+    "name" : "oflib-node",
     "version" : "0.1.0",
     "description" : "A module for conversion between OpenFlow wire protocol messages and JSON objects.",
     "keywords": ["OpenFlow", "JSON"],
