@@ -11,11 +11,6 @@
             "type" : {"$ref" : "../types/uint8.json"},
             "description" : "if not present indicates all tables"
         },
-        "config" : {
-            "type" : "array",
-            "items" : {"$ref" : "../constants/ofp_table_config.json"}
-            "uniqueItems" : true,
-            "required" : true
-        }
+        "config" : {"$ref" : "../constants/ofp_table_config.json"}
     ]
 }
