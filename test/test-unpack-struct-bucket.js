@@ -29,13 +29,22 @@ var oflib = require('../lib/oflib.js');
                 "weight" : 258,
                 "watch_group" : 65535,
                 "actions" : [
-                   {"type" : 'OFPAT_SET_DL_SRC', "dl_addr" : '12:34:56:78:9a:bc'},
-                   {"type" : 'OFPAT_SET_NW_SRC', "nw_addr" : '192.168.1.1'}
+                    {
+                        "header" : {"type" : 'OFPAT_SET_DL_SRC'},
+                        "body" : {"dl_addr" : '12:34:56:78:9a:bc'}
+                    },
+                    {
+                        "header" : {"type" : 'OFPAT_SET_NW_SRC'},
+                        "body" : {"nw_addr" : '192.168.1.1'}
+                    }
                 ]
             },
             "offset" : 40
         }
-    var res = oflib.unpackStruct.bucket(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackStruct.bucket(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.err(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

@@ -20,9 +20,12 @@ var oflib = require('../lib/oflib.js');
                 "byte_count" : {"high" : 0, "low" : 123456}
             },
             "offset" : 16
-        }
+        };
 
-    var res = oflib.unpackStruct.bucketCounter(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackStruct.bucketCounter(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.err(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

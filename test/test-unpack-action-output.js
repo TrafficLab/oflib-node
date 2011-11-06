@@ -4,7 +4,6 @@
 
 "use strict";
 
-var assert = require('assert');
 var util = require('util');
 var testutil = require('./testutil.js');
 var oflib = require('../lib/oflib.js');
@@ -18,13 +17,19 @@ var oflib = require('../lib/oflib.js');
                0x00, 0x00, 0x00, 0x00, 0x00, 0x00]; // padding
 
     var json = {
-            "action" : {"type" : 'OFPAT_OUTPUT', "port" : 1},
+            "action" : {
+                "header" : {"type" : 'OFPAT_OUTPUT'},
+                "body" : {"port" : 1}
+            },
             "offset" : 16
             };
 
-    var res = oflib.unpackAction(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackAction(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.error(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());
 
 (function() {
@@ -36,13 +41,22 @@ var oflib = require('../lib/oflib.js');
                0x00, 0x00, 0x00, 0x00, 0x00, 0x00]; // padding
 
     var json = {
-            "action" : {"type" : 'OFPAT_OUTPUT', "port" : 'OFPP_CONTROLLER', "max_len" : 1138},
+            "action" : {
+                "header" : {"type" : 'OFPAT_OUTPUT'},
+                "body" : {
+                    "port" : 'OFPP_CONTROLLER',
+                    "max_len" : 1138
+                }
+            },
             "offset" : 16
             };
 
-    var res = oflib.unpackAction(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackAction(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.error(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());
 
 (function() {
@@ -53,7 +67,11 @@ var oflib = require('../lib/oflib.js');
                0x00, 0x00,                          // max_len
                0x00, 0x00, 0x00, 0x00, 0x00, 0x00]; // padding
 
+
     var res = oflib.unpackAction(new Buffer(bin), 0);
-    assert('error' in res, util.format('Expected "error" key,\n received %j', res));
-    console.log("OK.");
+    if (!('error' in res)) {
+        console.error(util.format('Expected "error", received %j', res));
+    } else {
+        console.log("OK.");
+    }
 }());

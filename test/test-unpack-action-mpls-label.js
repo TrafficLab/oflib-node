@@ -4,7 +4,6 @@
 
 "use strict";
 
-var assert = require('assert');
 var util = require('util');
 var testutil = require('./testutil.js');
 var oflib = require('../lib/oflib.js');
@@ -16,13 +15,19 @@ var oflib = require('../lib/oflib.js');
                0x00, 0x01, 0xe2, 0x40]; // mpls_label = 123456
 
     var json = {
-            "action" : {"type" : 'OFPAT_SET_MPLS_LABEL', "mpls_label" : 123456},
+            "action" : {
+                "header" : {"type" : 'OFPAT_SET_MPLS_LABEL'},
+                "body" : {"mpls_label" : 123456}
+            },
             "offset" : 8
-            };
+        };
 
-    var res = oflib.unpackAction(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackAction(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.error(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());
 
 (function() {
@@ -32,6 +37,9 @@ var oflib = require('../lib/oflib.js');
                0x12, 0x34, 0x56, 0x78]; // mpls_label = 305419896 (INVALID)
 
     var res = oflib.unpackAction(new Buffer(bin), 0);
-    assert('error' in res, util.format('Expected "error" key,\n received %j', res));
-    console.log("OK.");
+    if (!('error' in res)) {
+        console.error(util.format('Expected "error", received %j', res));
+    } else {
+        console.log("OK.");
+    }
 }());

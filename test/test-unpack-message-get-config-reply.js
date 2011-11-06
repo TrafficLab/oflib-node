@@ -19,13 +19,24 @@ var oflib = require('../lib/oflib.js');
                0x01, 0x00];            // miss_send_len = 256
 
     var json = {
-            "message" : {"type" : 'OFPT_GET_CONFIG_REPLY', "xid" : 1234567890,
-                         "flags" : ['OFPC_FRAG_REASM', 'OFPC_INVALID_TTL_TO_CONTROLLER'],
-                         "miss_send_len" : 256},
+            "message" : {
+                "version" : 2,
+                "header" : {
+                    "type" : 'OFPT_GET_CONFIG_REPLY',
+                    "xid" : 1234567890
+                },
+                "body" : {
+                    "flags" : ['OFPC_FRAG_REASM', 'OFPC_INVALID_TTL_TO_CONTROLLER'],
+                    "miss_send_len" : 256
+                }
+            },
             "offset" : 12
-            };
+        };
 
-    var res = oflib.unpackMessage(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackMessage(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.err(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

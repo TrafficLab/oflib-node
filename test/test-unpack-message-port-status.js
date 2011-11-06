@@ -36,26 +36,36 @@ var oflib = require('../lib/oflib.js');
                    0x00, 0x00, 0x01, 0x00];            // max_speed = 256
 
     var json = {
-            "message" : {"type" : 'OFPT_PORT_STATUS', "xid" : 1234567890,
-                         "reason" : 'OFPPR_DELETE',
-                         "port" : {
-                             "port_no" : 18,
-                             "hw_addr" : '11:22:11:33:11:44',
-                             "name" : 'eth1',
-                             "config" : ['OFPPC_NO_FWD', 'OFPPC_NO_PACKET_IN'],
-                             "state" : ['OFPPS_LIVE'],
-                             "curr" : ['OFPPF_10GB_FD'],
-                             "advertised" : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD'],
-                             "supported" : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD', 'OFPPF_100MB_FD', 'OFPPF_100MB_HD'],
-                             "curr_speed" : 128,
-                             "max_speed" : 256
-                         }
+            "message" : {
+                "version" : 2,
+                "header" : {
+                    "type" : 'OFPT_PORT_STATUS',
+                    "xid" : 1234567890,
                 },
+                "body" : {
+                    "reason" : 'OFPPR_DELETE',
+                    "port" : {
+                        "port_no" : 18,
+                        "hw_addr" : '11:22:11:33:11:44',
+                        "name" : 'eth1',
+                        "config" : ['OFPPC_NO_FWD', 'OFPPC_NO_PACKET_IN'],
+                        "state" : ['OFPPS_LIVE'],
+                        "curr" : ['OFPPF_10GB_FD'],
+                        "advertised" : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD'],
+                        "supported" : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD', 'OFPPF_100MB_FD', 'OFPPF_100MB_HD'],
+                        "curr_speed" : 128,
+                        "max_speed" : 256
+                    }
+                }
+            },
             "offset" : 80
-        }
+        };
 
 
-    var res = oflib.unpackMessage(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackMessage(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.err(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

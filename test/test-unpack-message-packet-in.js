@@ -25,17 +25,28 @@ var oflib = require('../lib/oflib.js');
                0x11, 0x22, 0x33, 0x44, 0x55]; // data
 
     var json = {
-            "message" : {"type" : 'OFPT_PACKET_IN', "xid" : 1234567890,
-                         "buffer_id" : 19,
-                         "in_port" : 2,
-                         "total_len" : 1024,
-                         "reason" : 'OFPR_ACTION',
-                         "table_id" : 42,
-                         "data" : "1122334455"},
+            "message" : {
+                "version" : 2,
+                "header" : {
+                    "type" : 'OFPT_PACKET_IN',
+                    "xid" : 1234567890
+                },
+                "body" : {
+                    "buffer_id" : 19,
+                    "in_port" : 2,
+                    "total_len" : 1024,
+                    "reason" : 'OFPR_ACTION',
+                    "table_id" : 42,
+                    "data" : "1122334455"
+                }
+            },
             "offset" : 31
-            };
+        };
 
-    var res = oflib.unpackMessage(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackMessage(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.err(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

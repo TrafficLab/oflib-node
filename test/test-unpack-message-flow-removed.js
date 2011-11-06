@@ -52,37 +52,49 @@ var oflib = require('../lib/oflib.js');
                  0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff]; // metadata_mask = "00000000ffffffff"
 
     var json = {
-            "message" : {"type" : 'OFPT_FLOW_REMOVED', "xid" : 1234567890,
-                         "cookie" : 'aabbccddaabbccdd',
-                         "reason" : 'OFPRR_IDLE_TIMEOUT',
-                         "table_id" : 17,
-                         "priority" : 511,
-                         "duration_sec" : 4096,
-                         "duration_nsec" : 1,
-                         "idle_timeout" : 3584,
-                         "packet_count" : {"high" : 0, "low" : 16},
-                         "byte_count" : {"high" : 0, "low" : 18},
-                         "match" : {
-                           "type" : 'OFMPT_STANDARD',
-                           "in_port" : 16,
-                           "dl_src" : '11:22:33:44:00:00',
-                           "dl_src_mask" : '00:00:00:00:ff:ff',
-                           'dl_dst' : 'aa:bb:cc:00:00:00',
-                           "dl_dst_mask" : '00:00:00:ff:ff:ff',
-                           "dl_type" : 2048,
-                           "nw_proto" : 6,
-                           "nw_src" : '192.168.1.0',
-                           "nw_src_mask" : '0.0.0.255',
-                           "nw_dst" : '192.168.0.0',
-                           "nw_dst_mask" : '0.0.255.255',
-                           "metadata" : '1122334400000000',
-                           "metadata_mask" : '00000000ffffffff'
-                          }
+            "message" : {
+                "version" : 2,
+                "header" : {
+                    "type" : 'OFPT_FLOW_REMOVED',
+                    "xid" : 1234567890
                 },
+                "body" : {
+                    "cookie" : 'aabbccddaabbccdd',
+                    "reason" : 'OFPRR_IDLE_TIMEOUT',
+                    "table_id" : 17,
+                    "priority" : 511,
+                    "duration_sec" : 4096,
+                    "duration_nsec" : 1,
+                    "idle_timeout" : 3584,
+                    "packet_count" : {"high" : 0, "low" : 16},
+                    "byte_count" : {"high" : 0, "low" : 18},
+                    "match" : {
+                        "header" : {"type" : 'OFMPT_STANDARD'},
+                        "body" : {
+                            "in_port" : 16,
+                            "dl_src" : '11:22:33:44:00:00',
+                            "dl_src_mask" : '00:00:00:00:ff:ff',
+                            'dl_dst' : 'aa:bb:cc:00:00:00',
+                            "dl_dst_mask" : '00:00:00:ff:ff:ff',
+                            "dl_type" : 2048,
+                            "nw_proto" : 6,
+                            "nw_src" : '192.168.1.0',
+                            "nw_src_mask" : '0.0.0.255',
+                            "nw_dst" : '192.168.0.0',
+                            "nw_dst_mask" : '0.0.255.255',
+                            "metadata" : '1122334400000000',
+                            "metadata_mask" : '00000000ffffffff'
+                        }
+                    }
+                }
+            },
             "offset" : 136
-        }
+        };
 
-    var res = oflib.unpackMessage(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackMessage(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.error(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

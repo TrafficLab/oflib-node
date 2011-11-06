@@ -26,16 +26,27 @@ var oflib = require('../lib/oflib.js');
 
 
     var json = {
-            "message" : {"type" : 'OFPT_PORT_MOD', "xid" : 1234567890,
-                         "port_no" : 18,
-                         "hw_addr" : '11:22:11:33:11:44',
-                         "config_set" : ['OFPPC_NO_FWD', 'OFPPC_NO_PACKET_IN'],
-                         "config_unset" : ['OFPPC_NO_RECV', 'OFPPC_PORT_DOWN'],
-                         "advertise" : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD']
+            "message" : {
+                "version" : 2,
+                "header" : {
+                    "type" : 'OFPT_PORT_MOD',
+                    "xid" : 1234567890
+                },
+                "body" : {
+                    "port_no" : 18,
+                    "hw_addr" : '11:22:11:33:11:44',
+                    "config_set" : ['OFPPC_NO_FWD', 'OFPPC_NO_PACKET_IN'],
+                    "config_unset" : ['OFPPC_NO_RECV', 'OFPPC_PORT_DOWN'],
+                    "advertise" : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD']
+                }
             },
             "offset" : 40
-        }
-    var res = oflib.unpackMessage(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+        };
+
+    var test = testutil.objEquals(oflib.unpackMessage(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.err(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

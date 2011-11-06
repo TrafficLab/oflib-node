@@ -17,13 +17,19 @@ var oflib = require('../lib/oflib.js');
                0x01, 0xe2, 0x40]; // pad
 
     var json = {
-            "instruction" : {"type" : 'OFPIT_GOTO_TABLE', "table_id" : 13},
+            "instruction" : {
+                "header" : {"type" : 'OFPIT_GOTO_TABLE'},
+                "body" : {"table_id" : 13}
+            },
             "offset" : 8
-            };
+        };
 
-    var res = oflib.unpackInstruction(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackInstruction(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.error(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());
 
 (function() {
@@ -34,6 +40,9 @@ var oflib = require('../lib/oflib.js');
                0x01, 0xe2, 0x40]; // pad
 
     var res = oflib.unpackInstruction(new Buffer(bin), 0);
-    assert('error' in res, util.format('Expected "error" key,\n received %j', res));
-    console.log("OK.");
+    if (!('error' in res)) {
+        console.error(util.format('Expected "error", received %j', res));
+    } else {
+        console.log("OK.");
+    }
 }());

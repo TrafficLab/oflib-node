@@ -45,33 +45,55 @@ var oflib = require('../lib/oflib.js');
                        0xc0, 0xa8, 0x01, 0x01]; // nw_addr = "192.168.1.1"
 
     var json = {
-            "message" : {"type" : 'OFPT_GROUP_MOD', "xid" : 1234567890,
-                         "command" : "OFPGC_ADD",
-                         "group_type" : "OFPGT_SELECT",
-                         "group_id" : 20,
-                         "buckets" : [
-                             {
-                                 "weight" : 258,
-                                 "watch_group" : 65535,
-                                 "actions" : [
-                                     {"type" : 'OFPAT_SET_DL_SRC', "dl_addr" : '12:34:56:78:9a:bc'},
-                                     {"type" : 'OFPAT_SET_NW_SRC', "nw_addr" : '192.168.1.1'}
-                                 ]
-                             },
-                             {
-                                 "weight" : 258,
-                                 "watch_group" : 65535,
-                                 "actions" : [
-                                     {"type" : 'OFPAT_SET_DL_SRC', "dl_addr" : '12:34:56:78:9a:bc'},
-                                     {"type" : 'OFPAT_SET_NW_SRC', "nw_addr" : '192.168.1.1'}
-                                 ]
-                             }
-                        ]
+            "message" : {
+                "version" : 2,
+                "header" : {
+                    "type" : 'OFPT_GROUP_MOD',
+                    "xid" : 1234567890
                 },
+                "body" : {
+                    "command" : "OFPGC_ADD",
+                    "group_type" : "OFPGT_SELECT",
+                    "group_id" : 20,
+                    "buckets" : [
+                        {
+                            "weight" : 258,
+                            "watch_group" : 65535,
+                            "actions" : [
+                                {
+                                    "header" : {"type" : 'OFPAT_SET_DL_SRC'},
+                                    "body" : {"dl_addr" : '12:34:56:78:9a:bc'}
+                                },
+                                {
+                                    "header" : {"type" : 'OFPAT_SET_NW_SRC'},
+                                    "body" : {"nw_addr" : '192.168.1.1'}
+                                }
+                            ]
+                        },
+                        {
+                            "weight" : 258,
+                            "watch_group" : 65535,
+                            "actions" : [
+                                {
+                                    "header" : {"type" : 'OFPAT_SET_DL_SRC'},
+                                    "body" : {"dl_addr" : '12:34:56:78:9a:bc'}
+                                },
+                                {
+                                    "header" : {"type" : 'OFPAT_SET_NW_SRC'},
+                                    "body" : {"nw_addr" : '192.168.1.1'}
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
             "offset" : 96
-            };
+        };
 
-    var res = oflib.unpackMessage(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackMessage(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.err(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

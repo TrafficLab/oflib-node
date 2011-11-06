@@ -4,7 +4,6 @@
 
 "use strict";
 
-var assert = require('assert');
 var util = require('util');
 var testutil = require('./testutil.js');
 var oflib = require('../lib/oflib.js');
@@ -23,16 +22,28 @@ var oflib = require('../lib/oflib.js');
                    0xc0, 0xa8, 0x01, 0x01] // nw_addr = "192.168.1.1"
 
     var json = {
-            "instruction" : {"type" : 'OFPIT_APPLY_ACTIONS',
-                             "actions" : [
-                                 {"type" : 'OFPAT_SET_DL_SRC', "dl_addr" : '12:34:56:78:9a:bc'},
-                                 {"type" : 'OFPAT_SET_NW_SRC', "nw_addr" : '192.168.1.1'}
-                             ]
-                            },
-             "offset" : 32
+            "instruction" : {
+                "header" : {"type" : 'OFPIT_APPLY_ACTIONS'},
+                "body" : {
+                    "actions" : [
+                        {
+                            "header" : {"type" : 'OFPAT_SET_DL_SRC'},
+                            "body" : {"dl_addr" : '12:34:56:78:9a:bc'}
+                        },
+                        {
+                            "header" : {"type" : 'OFPAT_SET_NW_SRC'},
+                            "body" : {"nw_addr" : '192.168.1.1'}
+                        }
+                    ]
+                }
+            },
+            "offset" : 32
         };
 
-    var res = oflib.unpackInstruction(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackInstruction(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.error(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

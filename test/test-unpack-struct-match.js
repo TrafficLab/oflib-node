@@ -39,25 +39,30 @@ var oflib = require('../lib/oflib.js');
 
     var json = {
             "match" : {
-                "type" : 'OFMPT_STANDARD',
-                "in_port" : 16,
-                "dl_src" : '11:22:33:44:00:00',
-                "dl_src_mask" : '00:00:00:00:ff:ff',
-                'dl_dst' : 'aa:bb:cc:00:00:00',
-                "dl_dst_mask" : '00:00:00:ff:ff:ff',
-                "dl_type" : 2048,
-                "nw_proto" : 6,
-                "nw_src" : '192.168.1.0',
-                "nw_src_mask" : '0.0.0.255',
-                "nw_dst" : '192.168.0.0',
-                "nw_dst_mask" : '0.0.255.255',
-                "metadata" : '1122334400000000',
-                "metadata_mask" : '00000000ffffffff'
+                "header" : {"type" : 'OFMPT_STANDARD'},
+                "body" : {
+                    "in_port" : 16,
+                    "dl_src" : '11:22:33:44:00:00',
+                    "dl_src_mask" : '00:00:00:00:ff:ff',
+                    'dl_dst' : 'aa:bb:cc:00:00:00',
+                    "dl_dst_mask" : '00:00:00:ff:ff:ff',
+                    "dl_type" : 2048,
+                    "nw_proto" : 6,
+                    "nw_src" : '192.168.1.0',
+                    "nw_src_mask" : '0.0.0.255',
+                    "nw_dst" : '192.168.0.0',
+                    "nw_dst_mask" : '0.0.255.255',
+                    "metadata" : '1122334400000000',
+                    "metadata_mask" : '00000000ffffffff'
+                }
             },
             "offset" : 88
-        }
+        };
 
-    var res = oflib.unpackStruct.match(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackStruct.match(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.err(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

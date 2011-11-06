@@ -17,11 +17,20 @@ var oflib = require('../lib/oflib.js');
                0x49, 0x96, 0x02, 0xd2]; // xid = 1234567890
 
     var json = {
-            "message" : {"type" : 'OFPT_HELLO', "xid" : 1234567890},
+            "message" : {
+                "version" : 2,
+                "header" : {
+                    "type" : 'OFPT_HELLO',
+                    "xid" : 1234567890
+                }
+            },
             "offset" : 8
-            };
+        };
 
-    var res = oflib.unpackMessage(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackMessage(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.err(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

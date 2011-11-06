@@ -43,7 +43,10 @@ var oflib = require('../lib/oflib.js');
             },
             "offset" : 64
         }
-    var res = oflib.unpackStruct.port(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackStruct.port(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.err(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

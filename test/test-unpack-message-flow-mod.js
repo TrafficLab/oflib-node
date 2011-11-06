@@ -68,45 +68,70 @@ var oflib = require('../lib/oflib.js');
                      0x01, 0xe2, 0x40]; // pad
 
     var json = {
-            "message" : {"type" : 'OFPT_FLOW_MOD', "xid" : 1234567890,
-                         "cookie" : '1122334455667788',
-                         "cookie_mask" : 'aaabacadaeafbabb',
-                         "table_id" : 16,
-                         "command" : 'OFPFC_ADD',
-                         "hard_timeout" : 255,
-                         "priority" : 256,
-                         "buffer_id" : 1,
-                         "out_port" : 8,
-                         "flags" : ['OFPFF_SEND_FLOW_REM', 'OFPFF_CHECK_OVERLAP'],
-                         "match" : {
-                             "type" : 'OFMPT_STANDARD',
-                             "in_port" : 16,
-                             "dl_src" : '11:22:33:44:00:00',
-                             "dl_src_mask" : '00:00:00:00:ff:ff',
-                             'dl_dst' : 'aa:bb:cc:00:00:00',
-                             "dl_dst_mask" : '00:00:00:ff:ff:ff',
-                             "dl_type" : 2048,
-                             "nw_proto" : 6,
-                             "nw_src" : '192.168.1.0',
-                             "nw_src_mask" : '0.0.0.255',
-                             "nw_dst" : '192.168.0.0',
-                             "nw_dst_mask" : '0.0.255.255',
-                             "metadata" : '1122334400000000',
-                             "metadata_mask" : '00000000ffffffff'
-                         },
-                         "instructions" : [{"type" : 'OFPIT_APPLY_ACTIONS',
-                                            "actions" : [
-                                               {"type" : 'OFPAT_SET_DL_SRC', "dl_addr" : '12:34:56:78:9a:bc'},
-                                               {"type" : 'OFPAT_SET_NW_SRC', "nw_addr" : '192.168.1.1'}
-                                            ]
-                                           },
-                                           {"type" : 'OFPIT_GOTO_TABLE', "table_id" : 13}
-                         ],
-                   },
+            "message" : {
+                "version" : 2,
+                "header" : {
+                    "type" : 'OFPT_FLOW_MOD',
+                    "xid" : 1234567890
+                },
+                "body" : {
+                    "cookie" : '1122334455667788',
+                    "cookie_mask" : 'aaabacadaeafbabb',
+                    "table_id" : 16,
+                    "command" : 'OFPFC_ADD',
+                    "hard_timeout" : 255,
+                    "priority" : 256,
+                    "buffer_id" : 1,
+                    "out_port" : 8,
+                    "flags" : ['OFPFF_SEND_FLOW_REM', 'OFPFF_CHECK_OVERLAP'],
+                    "match" : {
+                        "header" : {"type" : 'OFMPT_STANDARD'},
+                        "body" : {
+                            "in_port" : 16,
+                            "dl_src" : '11:22:33:44:00:00',
+                            "dl_src_mask" : '00:00:00:00:ff:ff',
+                            'dl_dst' : 'aa:bb:cc:00:00:00',
+                            "dl_dst_mask" : '00:00:00:ff:ff:ff',
+                            "dl_type" : 2048,
+                            "nw_proto" : 6,
+                            "nw_src" : '192.168.1.0',
+                            "nw_src_mask" : '0.0.0.255',
+                            "nw_dst" : '192.168.0.0',
+                            "nw_dst_mask" : '0.0.255.255',
+                            "metadata" : '1122334400000000',
+                            "metadata_mask" : '00000000ffffffff'
+                        }
+                    },
+                    "instructions" : [
+                        {
+                            "header" : {"type" : 'OFPIT_APPLY_ACTIONS'},
+                            "body" : {
+                                "actions" : [
+                                    {
+                                        "header" : {"type" : 'OFPAT_SET_DL_SRC'},
+                                        "body" : {"dl_addr" : '12:34:56:78:9a:bc'}
+                                    },
+                                    {
+                                        "header" : {"type" : 'OFPAT_SET_NW_SRC'},
+                                        "body" : {"nw_addr" : '192.168.1.1'}
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "header" : {"type" : 'OFPIT_GOTO_TABLE'},
+                            "body" : {"table_id" : 13}
+                        }
+                    ]
+                }
+            },
             "offset" : 176
-            };
+        };
 
-    var res = oflib.unpackMessage(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+    var test = testutil.objEquals(oflib.unpackMessage(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.error(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());

@@ -21,13 +21,24 @@ var oflib = require('../lib/oflib.js');
 
 
     var json = {
-            "message" : {"type" : 'OFPT_TABLE_MOD', "xid" : 1234567890,
-                         "table_id" : 19,
-                         "config" : 'OFPTC_TABLE_MISS_DROP'
+            "message" : {
+                "version" : 2,
+                "header" : {
+                    "type" : 'OFPT_TABLE_MOD',
+                    "xid" : 1234567890
+                },
+                "body" : {
+                    "table_id" : 19,
+                    "config" : 'OFPTC_TABLE_MISS_DROP'
+                }
             },
             "offset" : 16
-        }
-    var res = oflib.unpackMessage(new Buffer(bin), 0);
-    assert(testutil.jsonEqualsStrict(res, json), util.format('Expected %j,\n received %j', json, res));
-    console.log("OK.");
+        };
+
+    var test = testutil.objEquals(oflib.unpackMessage(new Buffer(bin), 0), json);
+    if ('error' in test) {
+        console.err(test.error);
+    } else {
+        console.log("OK.");
+    }
 }());
