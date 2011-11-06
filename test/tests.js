@@ -35,11 +35,16 @@ function testUnpack(name, prefix, fun) {
             expect[name] = testInput.json;
             expect.offset = testInput.bin.length;
 
-            var res = testutil.objEquals(unpack, expect);
-            if ('error' in res) {
-                console.error(res.error);
+            if ('error' in unpack) {
+                console.error(unpack.error);
             } else {
-                console.log("OK.");
+
+                var res = testutil.objEquals(unpack, expect);
+                if ('error' in res) {
+                    console.error(res.error);
+                } else {
+                    console.log("OK.");
+                }
             }
         }
     });
@@ -52,3 +57,7 @@ testUnpack('bucket', 'struct-bucket.', oflib.unpackStruct.bucket);
 testUnpack('bucket-counter', 'struct-bucketCounter', oflib.unpackStruct.bucketCounter);
 testUnpack('match', 'struct-match', oflib.unpackStruct.match);
 testUnpack('port', 'struct-port', oflib.unpackStruct.port);
+testUnpack('flow-stats', 'struct-flowStats', oflib.unpackStruct.flowStats);
+testUnpack('group-stats', 'struct-groupStats', oflib.unpackStruct.groupStats);
+testUnpack('group-desc-stats', 'struct-groupDescStats', oflib.unpackStruct.groupDescStats);
+testUnpack('table-stats', 'struct-tableStats', oflib.unpackStruct.tableStats);

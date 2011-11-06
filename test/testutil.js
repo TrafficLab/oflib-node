@@ -29,7 +29,7 @@ module.exports = {
                 var key2 = keys2[i];
 
                 if (key1 != key2) {
-                    return {"error" : util.format("Objects at \"%s\" have different set of properties.", path)};
+                    return {"error" : util.format("Objects at \"%s\" have different set of properties (%j, %j).", path, keys1, keys2)};
                 }
 
                 var val1 = obj1[key1];

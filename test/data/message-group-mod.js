@@ -47,7 +47,7 @@ module.exports.json = {
                 },
                 "body" : {
                     "command" : "OFPGC_ADD",
-                    "group_type" : "OFPGT_SELECT",
+                    "type" : "OFPGT_SELECT",
                     "group_id" : 20,
                     "buckets" : [
                         {
