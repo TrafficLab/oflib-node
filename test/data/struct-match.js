@@ -4,14 +4,8 @@
 
 "use strict";
 
-var assert = require('assert');
-var util = require('util');
-var testutil = require('./testutil.js');
-var oflib = require('../lib/oflib.js');
-
-(function() {
-    console.log("1. ...");
-    var bin = [0x00, 0x00,                         // type = 0
+module.exports.bin = [
+               0x00, 0x00,                         // type = 0
                0x00, 0x58,                         // length = 88
                0x00, 0x00, 0x00, 0x10,             // in_port = 16,
                0x00, 0x00, 0x03, 0xd6,             // wildcards = 11 1101 0110
@@ -35,10 +29,10 @@ var oflib = require('../lib/oflib.js');
                0x00,                               // mpls_tc (wildcarded)
                0x00, 0x00, 0x00,                   // pad
                0x11, 0x22, 0x33, 0x44, 0x00, 0x00, 0x00, 0x00,  // metadata = "1122334400000000"
-               0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff]; // metadata_mask = "00000000ffffffff"
+               0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff   // metadata_mask = "00000000ffffffff"
+        ];
 
-    var json = {
-            "match" : {
+module.exports.json = {
                 "header" : {"type" : 'OFMPT_STANDARD'},
                 "body" : {
                     "in_port" : 16,
@@ -55,14 +49,4 @@ var oflib = require('../lib/oflib.js');
                     "metadata" : '1122334400000000',
                     "metadata_mask" : '00000000ffffffff'
                 }
-            },
-            "offset" : 88
-        };
-
-    var test = testutil.objEquals(oflib.unpackStruct.match(new Buffer(bin), 0), json);
-    if ('error' in test) {
-        console.err(test.error);
-    } else {
-        console.log("OK.");
-    }
-}());
+            };

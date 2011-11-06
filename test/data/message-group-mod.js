@@ -4,14 +4,8 @@
 
 "use strict";
 
-var assert = require('assert');
-var util = require('util');
-var testutil = require('./testutil.js');
-var oflib = require('../lib/oflib.js');
-
-(function() {
-    console.log("1. ...");
-    var bin = [0x02,                    // version = 2
+module.exports.bin = [
+               0x02,                    // version = 2
                0x0f,                    // type = 15
                0x00, 0x60,              // length = 96
                0x49, 0x96, 0x02, 0xd2,  // xid = 1234567890
@@ -42,10 +36,10 @@ var oflib = require('../lib/oflib.js');
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // pad
                        0x00, 0x05,              // type = 5
                        0x00, 0x08,              // len = 8
-                       0xc0, 0xa8, 0x01, 0x01]; // nw_addr = "192.168.1.1"
+                       0xc0, 0xa8, 0x01, 0x01   // nw_addr = "192.168.1.1"
+            ];
 
-    var json = {
-            "message" : {
+module.exports.json = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_GROUP_MOD',
@@ -86,14 +80,4 @@ var oflib = require('../lib/oflib.js');
                         }
                     ]
                 }
-            },
-            "offset" : 96
-        };
-
-    var test = testutil.objEquals(oflib.unpackMessage(new Buffer(bin), 0), json);
-    if ('error' in test) {
-        console.err(test.error);
-    } else {
-        console.log("OK.");
-    }
-}());
+            };
