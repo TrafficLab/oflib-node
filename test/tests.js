@@ -38,7 +38,6 @@ function testUnpack(name, prefix, fun) {
             if ('error' in unpack) {
                 console.error(unpack.error);
             } else {
-
                 var res = testutil.objEquals(unpack, expect);
                 if ('error' in res) {
                     console.error(res.error);

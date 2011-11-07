@@ -60,7 +60,7 @@ module.exports = {
 
         function arrEquals(arr1, arr2, path) {
             if (arr1.length != arr2.length) {
-                return {"error" : util.format("Arrays at \"%s\" have different lengths.", path)};
+                return {"error" : util.format("Arrays at \"%s\" have different lengths (%j, %j).", path, arr1, arr2)};
             }
 
             var s1 = arr1.sort();
