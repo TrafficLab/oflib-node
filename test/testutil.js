@@ -21,7 +21,7 @@ module.exports = {
             var keys2 = Object.keys(obj2).sort();
 
             if (keys1.length != keys2.length) {
-                return {"error" : util.format("Objects at \"%s\" have different number of properties (%d, %d).", path, keys1.length, keys2.length)};
+                return {"error" : util.format("Objects at \"%s\" have different number of properties (%j, %j).", path, keys1, keys2)};
             }
 
             for(var i=0; i<keys1.length; i++) {
@@ -50,7 +50,7 @@ module.exports = {
                                 }
                 } else {
                     if (val1 != val2) {
-                        return {"error" : util.format("Values at \"%s.%s\" differ.", path, key1)};
+                        return {"error" : util.format("Values at \"%s.%s\" differ (%j, %j).", path, key1, val1, val2)};
                     }
                 }
             }
