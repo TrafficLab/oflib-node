@@ -4,6 +4,8 @@
 
 "use strict";
 
+var Int64 = require('node-int64');
+
 module.exports.bin = [
                 0x00, 0xb0,                                      // length = 176
                 0x11,                                            // table_id = 17
@@ -58,15 +60,15 @@ module.exports.bin = [
                       0x01, 0xe2, 0x40   // pad
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "table_id" : 17,
                 "duration_sec" : 32,
                 "duration_nsec" : 64,
                 "priority" : 65535,
                 "hard_timeout" : 255,
-                "cookie" : "aaaabbbbaaaabbbb",
-                "packet_count" : {"high" : 0, "low" : 1},
-                "byte_count" : {"high" : 0, "low" : 25},
+                "cookie" : new Buffer([0xaa, 0xaa, 0xbb, 0xbb, 0xaa, 0xaa, 0xbb, 0xbb]),
+                "packet_count" : new Int64(0, 1),
+                "byte_count" : new Int64(0, 25),
                 "match" : {
                     "header" : {"type" : 'OFMPT_STANDARD'},
                     "body" : {
@@ -81,8 +83,8 @@ module.exports.json = {
                         "nw_src_mask" : '0.0.0.255',
                         "nw_dst" : '192.168.0.0',
                         "nw_dst_mask" : '0.0.255.255',
-                        "metadata" : '1122334400000000',
-                        "metadata_mask" : '00000000ffffffff'
+                        "metadata" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x00, 0x00, 0x00, 0x00]),
+                        "metadata_mask" : new Buffer([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff])
                     }
                 },
                 "instructions" : [

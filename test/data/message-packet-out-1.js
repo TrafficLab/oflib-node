@@ -23,7 +23,7 @@ module.exports.bin = [
                  0x11, 0x22, 0x33, 0x44, 0x55  // data
             ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_PACKET_OUT',
@@ -41,6 +41,6 @@ module.exports.json = {
                             "body" : {"nw_addr" : '192.168.1.1'}
                         }
                     ],
-                    "data" : "1122334455"
+                    "data" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x55])
                 }
             };

@@ -11,7 +11,7 @@ module.exports.bin = [
                 0x49, 0x96, 0x02, 0xd2   // xid = 1234567890
             ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_GET_CONFIG_REQUEST',

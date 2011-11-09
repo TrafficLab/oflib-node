@@ -17,7 +17,7 @@ module.exports.bin = [
                 0xc0, 0xa8, 0x01, 0x01  // nw_addr = "192.168.1.1"
     ];
 
-module.exports.json = {
+module.exports.obj = {
             "header" : {"type" : 'OFPIT_APPLY_ACTIONS'},
             "body" : {
                 "actions" : [

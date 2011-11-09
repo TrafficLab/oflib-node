@@ -12,13 +12,13 @@ module.exports.bin = [
             0xaa, 0xbb, 0xcc, 0xdd, 0xee   // data = "aabbccddee"
         ];
 
-module.exports.json = {
+module.exports.obj = {
             "version" : 2,
             "header" : {
                 "type" : 'OFPT_ECHO_REQUEST',
                 "xid" : 1234567890
             },
             "body" : {
-                "data" : 'aabbccddee'
+                "data" : new Buffer([0xaa, 0xbb, 0xcc, 0xdd, 0xee])
             }
         };

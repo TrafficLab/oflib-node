@@ -11,7 +11,7 @@ module.exports.bin = [
         0x00, 0x00, 0x00   // pad
     ];
 
-module.exports.json = {
+module.exports.obj = {
                 "header" : {"type" : 'OFPIT_GOTO_TABLE'},
                 "body" : {"table_id" : 13}
         };

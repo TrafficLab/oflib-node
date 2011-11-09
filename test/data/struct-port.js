@@ -23,7 +23,7 @@ module.exports.bin = [
                0x00, 0x00, 0x01, 0x00              // max_speed = 256
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "port_no" : 18,
                 "hw_addr" : '11:22:11:33:11:44',
                 "name" : 'eth1',

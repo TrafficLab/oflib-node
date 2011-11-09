@@ -62,15 +62,15 @@ module.exports.bin = [
                       0x01, 0xe2, 0x40   // pad
             ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_FLOW_MOD',
                     "xid" : 1234567890
                 },
                 "body" : {
-                    "cookie" : '1122334455667788',
-                    "cookie_mask" : 'aaabacadaeafbabb',
+                    "cookie" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88]),
+                    "cookie_mask" : new Buffer([0xaa, 0xab, 0xac ,0xad, 0xae ,0xaf ,0xba ,0xbb]),
                     "table_id" : 16,
                     "command" : 'OFPFC_ADD',
                     "hard_timeout" : 255,
@@ -92,8 +92,8 @@ module.exports.json = {
                             "nw_src_mask" : '0.0.0.255',
                             "nw_dst" : '192.168.0.0',
                             "nw_dst_mask" : '0.0.255.255',
-                            "metadata" : '1122334400000000',
-                            "metadata_mask" : '00000000ffffffff'
+                            "metadata" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x00, 0x00, 0x00, 0x00]),
+                            "metadata_mask" : new Buffer([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff])
                         }
                     },
                     "instructions" : [

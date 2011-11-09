@@ -32,7 +32,7 @@ function testUnpack(name, prefix, fun) {
         } else {
             // positive testcase
             var expect = {};
-            expect[name] = testInput.json;
+            expect[name] = testInput.obj;
             expect.offset = testInput.bin.length;
 
             if ('error' in unpack) {

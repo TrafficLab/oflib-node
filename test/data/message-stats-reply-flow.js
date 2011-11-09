@@ -4,6 +4,8 @@
 
 "use strict";
 
+var Int64 = require('node-int64');
+
 module.exports.bin = [
                0x02,                          // version = 2
                0x13,                          // type = 19
@@ -116,7 +118,7 @@ module.exports.bin = [
                          0x01, 0xe2, 0x40   // pad
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_STATS_REPLY',
@@ -135,9 +137,9 @@ module.exports.json = {
                                 "duration_nsec" : 64,
                                 "priority" : 65535,
                                 "hard_timeout" : 255,
-                                "cookie" : "aaaabbbbaaaabbbb",
-                                "packet_count" : {"high" : 0, "low" : 1},
-                                "byte_count" : {"high" : 0, "low" : 25},
+                                "cookie" : new Buffer([0xaa, 0xaa, 0xbb, 0xbb, 0xaa, 0xaa, 0xbb, 0xbb]),
+                                "packet_count" : new Int64(0, 1),
+                                "byte_count" : new Int64(0, 25),
                                 "match" : {
                                     "header" : {"type" : 'OFMPT_STANDARD'},
                                     "body" : {
@@ -152,8 +154,8 @@ module.exports.json = {
                                         "nw_src_mask" : '0.0.0.255',
                                         "nw_dst" : '192.168.0.0',
                                         "nw_dst_mask" : '0.0.255.255',
-                                        "metadata" : '1122334400000000',
-                                        "metadata_mask" : '00000000ffffffff'
+                                        "metadata" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x00, 0x00, 0x00, 0x00]),
+                                        "metadata_mask" : new Buffer([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff])
                                     }
                                 },
                                 "instructions" : [
@@ -184,9 +186,9 @@ module.exports.json = {
                                 "duration_nsec" : 64,
                                 "priority" : 65535,
                                 "hard_timeout" : 255,
-                                "cookie" : "aaaabbbbaaaabbbb",
-                                "packet_count" : {"high" : 0, "low" : 1},
-                                "byte_count" : {"high" : 0, "low" : 25},
+                                "cookie" : new Buffer([0xaa, 0xaa, 0xbb, 0xbb, 0xaa, 0xaa, 0xbb, 0xbb]),
+                                "packet_count" : new Int64(0, 1),
+                                "byte_count" : new Int64(0, 25),
                                 "match" : {
                                     "header" : {"type" : 'OFMPT_STANDARD'},
                                     "body" : {
@@ -201,8 +203,8 @@ module.exports.json = {
                                         "nw_src_mask" : '0.0.0.255',
                                         "nw_dst" : '192.168.0.0',
                                         "nw_dst_mask" : '0.0.255.255',
-                                        "metadata" : '1122334400000000',
-                                        "metadata_mask" : '00000000ffffffff'
+                                        "metadata" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x00, 0x00, 0x00, 0x00]),
+                                        "metadata_mask" : new Buffer([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff])
                                     }
                                 },
                                 "instructions" : [

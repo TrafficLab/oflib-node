@@ -4,6 +4,8 @@
 
 "use strict";
 
+var Int64 = require('node-int64');
+
 module.exports.bin = [
                0x02,                          // version = 2
                0x13,                          // type = 19
@@ -24,7 +26,7 @@ module.exports.bin = [
                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1e   // tx_errors = 30
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_STATS_REPLY',
@@ -40,16 +42,16 @@ module.exports.json = {
                             {
                                 "port_no" : 13,
                                 "queue_id" : 22,
-                                "tx_bytes" : {"high" : 0, "low" : 10},
-                                "tx_packets" : {"high" : 0, "low" : 20},
-                                "tx_errors" : {"high" : 0, "low" : 30},
+                                "tx_bytes" : new Int64(0, 10),
+                                "tx_packets" : new Int64(0, 20),
+                                "tx_errors" : new Int64(0, 30),
                             },
                             {
                                 "port_no" : 13,
                                 "queue_id" : 23,
-                                "tx_bytes" : {"high" : 0, "low" : 10},
-                                "tx_packets" : {"high" : 0, "low" : 20},
-                                "tx_errors" : {"high" : 0, "low" : 30},
+                                "tx_bytes" : new Int64(0, 10),
+                                "tx_packets" : new Int64(0, 20),
+                                "tx_errors" : new Int64(0, 30),
                             }
                         ]
                     }

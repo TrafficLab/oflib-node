@@ -4,6 +4,8 @@
 
 "use strict";
 
+var Int64 = require('node-int64');
+
 module.exports.bin = [
                 0x0d,                                            // table_id = 13
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,        // pad
@@ -23,7 +25,7 @@ module.exports.bin = [
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03   // matched_count = 3
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "table_id" : 13,
                 "name" : "Table 13",
                 "wildcards" : ['OFPFW_IN_PORT', 'OFPFW_DL_VLAN', 'OFPFW_DL_VLAN_PCP'],
@@ -34,6 +36,6 @@ module.exports.json = {
                 "config" : ['OFPTC_TABLE_MISS_CONTINUE'],
                 "max_entries" : 80,
                 "active_count" : 48,
-                "lookup_count" : {"high" : 0, "low" : 5},
-                "matched_count" : {"high" : 0, "low" : 3}
+                "lookup_count" : new Int64(0, 5),
+                "matched_count" : new Int64(0, 3)
             };

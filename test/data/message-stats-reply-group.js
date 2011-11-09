@@ -4,6 +4,8 @@
 
 "use strict";
 
+var Int64 = require('node-int64');
+
 module.exports.bin = [
                0x02,                          // version = 2
                0x13,                          // type = 19
@@ -36,7 +38,7 @@ module.exports.bin = [
                           0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xe2, 0x41   // byte_count = 123457
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_STATS_REPLY',
@@ -52,32 +54,32 @@ module.exports.json = {
                             {
                                 "group_id" : 34,
                                 "ref_count" : 3,
-                                "packet_count" : {"high" : 0, "low" : 1},
-                                "byte_count" : {"high" : 0, "low" : 25},
+                                "packet_count" : new Int64(0, 1),
+                                "byte_count" : new Int64(0, 25),
                                 "bucket_stats" : [
                                     {
-                                        "packet_count" : {"high" : 26, "low" : 564295870}, // 26 * 2^32 + 564295870 = 112233445566
-                                        "byte_count" : {"high" : 0, "low" : 123456}
+                                        "packet_count" : new Int64(26, 564295870), // 26 * 2^32 + 564295870 = 112233445566
+                                        "byte_count" : new Int64(0, 123456)
                                     },
                                     {
-                                        "packet_count" : {"high" : 26, "low" : 564295871}, // 26 * 2^32 + 564295871 = 112233445567
-                                        "byte_count" : {"high" : 0, "low" : 123457}
+                                        "packet_count" : new Int64(26, 564295871), // 26 * 2^32 + 564295870 = 112233445567
+                                        "byte_count" : new Int64(0, 123457)
                                     },
                                 ]
                             },
                             {
                                 "group_id" : 35,
                                 "ref_count" : 4,
-                                "packet_count" : {"high" : 0, "low" : 1},
-                                "byte_count" : {"high" : 0, "low" : 25},
+                                "packet_count" : new Int64(0, 1),
+                                "byte_count" : new Int64(0, 25),
                                 "bucket_stats" : [
                                     {
-                                        "packet_count" : {"high" : 26, "low" : 564295870}, // 26 * 2^32 + 564295870 = 112233445566
-                                        "byte_count" : {"high" : 0, "low" : 123456}
+                                        "packet_count" : new Int64(26, 564295870), // 26 * 2^32 + 564295870 = 112233445566
+                                        "byte_count" : new Int64(0, 123456)
                                     },
                                     {
-                                        "packet_count" : {"high" : 26, "low" : 564295871}, // 26 * 2^32 + 564295871 = 112233445567
-                                        "byte_count" : {"high" : 0, "low" : 123457}
+                                        "packet_count" : new Int64(26, 564295871), // 26 * 2^32 + 564295870 = 112233445567
+                                        "byte_count" : new Int64(0, 123457)
                                     },
                                 ]
                             },

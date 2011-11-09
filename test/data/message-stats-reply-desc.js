@@ -146,7 +146,7 @@ module.exports.bin = [
                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00  // dp_desc = "Datapath description"
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_STATS_REPLY',

@@ -4,6 +4,8 @@
 
 "use strict";
 
+var Int64 = require('node-int64');
+
 module.exports.bin = [
                0x02,                          // version = 2
                0x13,                          // type = 19
@@ -28,7 +30,7 @@ module.exports.bin = [
                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c,  // collisions = 12
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_STATS_REPLY',
@@ -43,17 +45,17 @@ module.exports.json = {
                         "stats" : [
                             {
                                 "port_no" : 13,
-                                "rx_packets" : {"high" : 0, "low" : 1},
-                                "tx_packets" : {"high" : 0, "low" : 2},
-                                "rx_bytes" : {"high" : 0, "low" : 3},
-                                "tx_bytes" : {"high" : 0, "low" : 4},
-                                "rx_dropped" : {"high" : 0, "low" : 5},
-                                "tx_dropped" : {"high" : 0, "low" : 6},
-                                "rx_errors" : {"high" : 0, "low" : 7},
-                                "tx_errors" : {"high" : 0, "low" : 8},
-                                "rx_over_err" : {"high" : 0, "low" : 10},
-                                "rx_crc_err" : {"high" : 0, "low" : 11},
-                                "collisions" : {"high" : 0, "low" : 12}
+                                "rx_packets" : new Int64(0, 1),
+                                "tx_packets" : new Int64(0, 2),
+                                "rx_bytes" : new Int64(0, 3),
+                                "tx_bytes" : new Int64(0, 4),
+                                "rx_dropped" : new Int64(0, 5),
+                                "tx_dropped" : new Int64(0, 6),
+                                "rx_errors" : new Int64(0, 7),
+                                "tx_errors" : new Int64(0, 8),
+                                "rx_over_err" : new Int64(0, 10),
+                                "rx_crc_err" : new Int64(0, 11),
+                                "collisions" : new Int64(0, 12)
                             }
                         ]
                     }

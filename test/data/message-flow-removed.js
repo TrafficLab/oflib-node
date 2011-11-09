@@ -4,6 +4,8 @@
 
 "use strict";
 
+var Int64 = require('node-int64');
+
 module.exports.bin = [
                 0x02,                    // version = 2
                 0x0b,                    // type = 11
@@ -46,22 +48,22 @@ module.exports.bin = [
                     0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff   // metadata_mask = "00000000ffffffff"
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_FLOW_REMOVED',
                     "xid" : 1234567890
                 },
                 "body" : {
-                    "cookie" : 'aabbccddaabbccdd',
+                    "cookie" : new Buffer([0xaa, 0xbb, 0xcc, 0xdd, 0xaa, 0xbb, 0xcc, 0xdd]),
                     "reason" : 'OFPRR_IDLE_TIMEOUT',
                     "table_id" : 17,
                     "priority" : 511,
                     "duration_sec" : 4096,
                     "duration_nsec" : 1,
                     "idle_timeout" : 3584,
-                    "packet_count" : {"high" : 0, "low" : 16},
-                    "byte_count" : {"high" : 0, "low" : 18},
+                    "packet_count" : new Int64(0, 16),
+                    "byte_count" : new Int64(0, 18),
                     "match" : {
                         "header" : {"type" : 'OFMPT_STANDARD'},
                         "body" : {
@@ -76,8 +78,8 @@ module.exports.json = {
                             "nw_src_mask" : '0.0.0.255',
                             "nw_dst" : '192.168.0.0',
                             "nw_dst_mask" : '0.0.255.255',
-                            "metadata" : '1122334400000000',
-                            "metadata_mask" : '00000000ffffffff'
+                            "metadata" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x00, 0x00, 0x00, 0x00]),
+                            "metadata_mask" : new Buffer([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff])
                         }
                     }
                 }

@@ -30,7 +30,7 @@ module.exports.bin = [
                    0x00, 0x00, 0x01, 0x00              // max_speed = 256
             ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_PORT_STATUS',

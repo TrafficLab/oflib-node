@@ -4,6 +4,8 @@
 
 "use strict";
 
+var Int64 = require('node-int64');
+
 module.exports.bin = [
                0x02,                          // version = 2
                0x13,                          // type = 19
@@ -18,7 +20,7 @@ module.exports.bin = [
                    0x00, 0x00, 0x00, 0x00                          // padding
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_STATS_REPLY',
@@ -30,8 +32,8 @@ module.exports.json = {
                         "flags" : ['OFPSF_REPLY_MORE']
                     },
                     "body" : {
-                        "packet_count" : {"high" : 0, "low" : 1},
-                        "byte_count" : {"high" : 0, "low" : 2},
+                        "packet_count" : new Int64(0, 1),
+                        "byte_count" : new Int64(0, 2),
                         "flow_count" : 3,
                     }
                 }

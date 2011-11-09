@@ -16,7 +16,7 @@ module.exports.bin = [
                    0x00, 0x00, 0x00, 0x20     // queue_id = 32
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_STATS_REQUEST',

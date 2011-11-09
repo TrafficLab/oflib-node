@@ -12,7 +12,7 @@ module.exports.bin = [
                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "header" : {"property" : 'OFPQT_MIN_RATE'},
                 "body" : {}
             };

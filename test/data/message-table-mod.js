@@ -14,7 +14,7 @@ module.exports.bin = [
                  0x00, 0x00, 0x00, 0x02       // config = 2
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_TABLE_MOD',

@@ -19,7 +19,7 @@ module.exports.bin = [
                 0x11, 0x22, 0x33, 0x44, 0x55   // data
             ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_PACKET_IN',
@@ -31,6 +31,6 @@ module.exports.json = {
                     "total_len" : 1024,
                     "reason" : 'OFPR_ACTION',
                     "table_id" : 42,
-                    "data" : "1122334455"
+                    "data" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x55])
                 }
             };

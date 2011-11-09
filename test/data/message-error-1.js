@@ -14,7 +14,7 @@ module.exports.bin = [
             0xab, 0xbc, 0xcd, 0xde   // data = "abbccdde"
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_ERROR',
@@ -23,6 +23,6 @@ module.exports.json = {
                 "body" : {
                     "type" : 'OFPET_BAD_ACTION',
                     "code" : 'OFPBAC_BAD_LEN',
-                    "data" : "abbccdde"
+                    "data" : new Buffer([0xab, 0xbc, 0xcd, 0xde])
                 }
             };

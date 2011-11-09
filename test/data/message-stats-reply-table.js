@@ -4,6 +4,8 @@
 
 "use strict";
 
+var Int64 = require('node-int64');
+
 module.exports.bin = [
                0x02,                          // version = 2
                0x13,                          // type = 19
@@ -62,7 +64,7 @@ module.exports.bin = [
                            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03   // matched_count = 3
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_STATS_REPLY',
@@ -86,8 +88,8 @@ module.exports.json = {
                                 "config" : ['OFPTC_TABLE_MISS_CONTINUE'],
                                 "max_entries" : 80,
                                 "active_count" : 48,
-                                "lookup_count" : {"high" : 0, "low" : 5},
-                                "matched_count" : {"high" : 0, "low" : 3}
+                                "lookup_count" : new Int64(0, 5),
+                                "matched_count" : new Int64(0, 3)
                             },
                             {
                                 "table_id" : 14,
@@ -100,8 +102,8 @@ module.exports.json = {
                                 "config" : ['OFPTC_TABLE_MISS_CONTINUE'],
                                 "max_entries" : 80,
                                 "active_count" : 48,
-                                "lookup_count" : {"high" : 0, "low" : 5},
-                                "matched_count" : {"high" : 0, "low" : 3}
+                                "lookup_count" : new Int64(0, 5),
+                                "matched_count" : new Int64(0, 3)
                             },
                             {
                                 "table_id" : 15,
@@ -114,8 +116,8 @@ module.exports.json = {
                                 "config" : ['OFPTC_TABLE_MISS_CONTINUE'],
                                 "max_entries" : 80,
                                 "active_count" : 48,
-                                "lookup_count" : {"high" : 0, "low" : 5},
-                                "matched_count" : {"high" : 0, "low" : 3}
+                                "lookup_count" : new Int64(0, 5),
+                                "matched_count" : new Int64(0, 3)
                             }
                         ]
                     }

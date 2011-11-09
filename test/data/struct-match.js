@@ -32,7 +32,7 @@ module.exports.bin = [
                0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff   // metadata_mask = "00000000ffffffff"
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "header" : {"type" : 'OFMPT_STANDARD'},
                 "body" : {
                     "in_port" : 16,
@@ -46,7 +46,7 @@ module.exports.json = {
                     "nw_src_mask" : '0.0.0.255',
                     "nw_dst" : '192.168.0.0',
                     "nw_dst_mask" : '0.0.255.255',
-                    "metadata" : '1122334400000000',
-                    "metadata_mask" : '00000000ffffffff'
+                    "metadata" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x00, 0x00, 0x00, 0x00]),
+                    "metadata_mask" : new Buffer([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff])
                 }
             };

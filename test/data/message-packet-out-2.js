@@ -23,7 +23,7 @@ module.exports.bin = [
                  0x11, 0x22, 0x33, 0x44, 0x55   // data
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_PACKET_OUT',

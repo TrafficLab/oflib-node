@@ -15,7 +15,7 @@ module.exports.bin = [
                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "queue_id" : 16,
                 "properties" : [
                     {

@@ -46,7 +46,7 @@ module.exports.bin = [
                      0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff  // metadata_mask = "00000000ffffffff"
         ];
 
-module.exports.json = {
+module.exports.obj = {
                 "version" : 2,
                 "header" : {
                     "type" : 'OFPT_STATS_REQUEST',
@@ -60,8 +60,8 @@ module.exports.json = {
                     "body" : {
                         "table_id" : 16,
                         "out_port" : 8,
-                        "cookie" : '1122334455667788',
-                        "cookie_mask" : 'aaabacadaeafbabb',
+                        "cookie" : new Buffer([0x11, 0x22, 0x33,0x44, 0x55, 0x66, 0x77, 0x88]),
+                        "cookie_mask" : new Buffer([0xaa, 0xab, 0xac, 0xad, 0xae, 0xaf, 0xba, 0xbb]),
                         "match" : {
                             "header" : {"type" : 'OFMPT_STANDARD'},
                             "body" : {
@@ -76,8 +76,8 @@ module.exports.json = {
                                 "nw_src_mask" : '0.0.0.255',
                                 "nw_dst" : '192.168.0.0',
                                 "nw_dst_mask" : '0.0.255.255',
-                                "metadata" : '1122334400000000',
-                                "metadata_mask" : '00000000ffffffff'
+                                "metadata" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x00, 0x00, 0x00, 0x00]),
+                                "metadata_mask" : new Buffer([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff])
                             }
                         }
                     }
