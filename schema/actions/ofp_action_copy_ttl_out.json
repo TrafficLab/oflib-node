@@ -1,9 +1,0 @@
-/*
- * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
- */
-
-{
-    "id" : "ofp_action_copy_ttl_out",
-    "type" : "object",
-    "extends" : {"$ref" : "./ofp_action_header.json"}  /* OFPAT_COPY_TTL_OUT. */
-}

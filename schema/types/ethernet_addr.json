@@ -1,9 +1,0 @@
-/*
- * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
- */
-
-{
-    "id" : "ethernet_addr",
-    "type" : "string",
-    "pattern" : "^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$"
-}

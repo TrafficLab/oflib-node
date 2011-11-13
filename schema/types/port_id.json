@@ -1,9 +1,0 @@
-/*
- * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
- */
-
-{
-    "id" : "port_id",
-    "minimum" : 1,
-    "maximum" : 0xffffff00   /* OFPP_MAX */
-}

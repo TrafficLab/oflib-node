@@ -1,9 +1,0 @@
-/*
- * Author: Zoltán Lajos Kis <zoltan.lajos.kis@ericsson.com>
- */
-
-{
-    "id" : "cookie_req"
-    "extends" : {"$ref" : "./cookie.json"},
-    "required" : true
-}
