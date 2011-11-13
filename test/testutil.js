@@ -22,7 +22,7 @@ module.exports = {
             if (typeof obj1 != 'object' ||
                 typeof obj2 != 'object') {
                     if (obj1 != obj2) {
-                        return {"error" : util.format("Value at \"%s\" is not an object (%s).", path, obj2)};
+                        return {"error" : util.format("Value at \"%s\" is different (%s, %s).", path, obj1, obj2)};
                     } else {
                         return {"equals" : true};
                     }

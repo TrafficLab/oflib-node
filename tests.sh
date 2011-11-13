@@ -1,3 +1,5 @@
 #!/bin/sh
 
-node test/tests.js
+cd test
+node tests.js
+cd ..

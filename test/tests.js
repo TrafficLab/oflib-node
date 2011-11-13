@@ -7,60 +7,91 @@
 var fs = require('fs');
 var util = require('util');
 var testutil = require('./testutil.js');
-var oflib = require('../lib/oflib.js');
 
-function testUnpack(name, prefix, fun) {
-    console.log('Testing unpack ' + name + '.');
+String.prototype.endsWith = function(suffix) {
+    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+};
 
-    var testCases = fs.readdirSync('./test/data').filter(function(n) { return n.indexOf(prefix) == 0; }).sort();
+function testUnpack(path, name, fun) {
+    var files = [];
+    if (path.endsWith('/')) {
+        fs.readdirSync(path).filter(function(file) { return file.endsWith('.js') })
+                            .sort()
+                            .forEach(function(file) { files.push(path + file) });
+    } else {
+        files.push(path);
+    }
 
-    /* cwd is in root dir */
-    testCases.forEach(function(test) {
-        console.log(test + ' ...');
-        var testInput = require('./data/' + test);
+    files.forEach(function(file) {
+        process.stdout.write('Unpacking ' + file + ' ...');
 
-        var unpack = fun(new Buffer(testInput.bin), 0);
+        var test = require(file);
 
-        if ('error' in testInput) {
-            // negative testcase
-            if (!('error' in unpack)) {
-                console.error(util.format('Expected "error", received %j', unpack));
+        var unpack = fun(new Buffer(test.bin), 0);
+
+        if ('warnings' in test) {
+            // negative testcase for warnings
+            if (!('warnings' in unpack)) {
+                process.stderr.write(' ERROR.\n');
+                process.stderr.write(util.format("Expected \"warnings\", received %j\n", unpack));
             } else {
-                console.log("OK.");
+                process.stdout.write(' OK.\n');
+            }
+
+        } else if ('error' in test) {
+            // negative testcase for error
+            if (!('error' in unpack)) {
+                process.stderr.write(' ERROR.\n');
+                process.stderr.write(util.format("Expected \"error\", received %j\n", unpack));
+            } else {
+                process.stdout.write(' OK.\n');
             }
 
         } else {
             // positive testcase
             var expect = {};
-            expect[name] = testInput.obj;
-            expect.offset = testInput.bin.length;
+            expect[name] = test.obj;
+            expect.offset = test.bin.length;
 
             if ('error' in unpack) {
-                console.error(unpack.error);
+                process.stderr.write(' ERROR.\n');
+                process.stderr.write(util.format("%j\n", unpack.error));
+            } else if ('warnings' in unpack) {
+                process.stderr.write(' ERROR.\n');
+                process.stderr.write(util.format("%j\n", unpack.warnings));
             } else {
                 var res = testutil.objEquals(unpack, expect);
+
                 if ('error' in res) {
-                    console.error(res.error);
+                    process.stderr.write(' ERROR.\n');
+                    process.stderr.write(util.format("%j\n", res.error));
                 } else {
-                    console.log("OK.");
+                    process.stdout.write(' OK.\n');
                 }
             }
         }
     });
+
 }
 
-testUnpack('action', 'action', oflib.unpackAction);
-testUnpack('instruction', 'instruction', oflib.unpackInstruction);
-testUnpack('message', 'message', oflib.unpackMessage);
-testUnpack('bucket', 'struct-bucket.', oflib.unpackStruct.bucket);
-testUnpack('bucket-counter', 'struct-bucketCounter', oflib.unpackStruct.bucketCounter);
-testUnpack('match', 'struct-match', oflib.unpackStruct.match);
-testUnpack('port', 'struct-port.', oflib.unpackStruct.port);
-testUnpack('flow-stats', 'struct-flowStats', oflib.unpackStruct.flowStats);
-testUnpack('group-stats', 'struct-groupStats', oflib.unpackStruct.groupStats);
-testUnpack('group-desc-stats', 'struct-groupDescStats', oflib.unpackStruct.groupDescStats);
-testUnpack('table-stats', 'struct-tableStats', oflib.unpackStruct.tableStats);
-testUnpack('port-stats', 'struct-portStats', oflib.unpackStruct.portStats);
-testUnpack('queue-stats', 'struct-queueStats', oflib.unpackStruct.queueStats);
-testUnpack('queue-prop', 'struct-queueProp', oflib.unpackStruct.queueProp);
-testUnpack('packet-queue', 'struct-packetQueue', oflib.unpackStruct.packetQueue);
+/* OpenFlow 1.1 - Unpack */
+testUnpack('./data-1.1/actions/', 'action', require('../lib/ofp-1.1/action.js').unpack);
+testUnpack('./data-1.1/instructions/', 'instruction', require('../lib/ofp-1.1/instruction.js').unpack);
+testUnpack('./data-1.1/structs/bucket.js', 'bucket', require('../lib/ofp-1.1/structs/bucket.js').unpack);
+testUnpack('./data-1.1/structs/bucket-counter.js', 'bucket-counter', require('../lib/ofp-1.1/structs/bucket-counter.js').unpack);
+testUnpack('./data-1.1/structs/group-stats.js', 'group-stats', require('../lib/ofp-1.1/structs/group-stats.js').unpack);
+testUnpack('./data-1.1/structs/group-desc-stats.js', 'group-desc-stats', require('../lib/ofp-1.1/structs/group-desc-stats.js').unpack);
+testUnpack('./data-1.1/structs/flow-stats.js', 'flow-stats', require('../lib/ofp-1.1/structs/flow-stats.js').unpack);
+testUnpack('./data-1.1/structs/match.js', 'match', require('../lib/ofp-1.1/structs/match.js').unpack);
+testUnpack('./data-1.1/structs/packet-queue.js', 'packet-queue', require('../lib/ofp-1.1/structs/packet-queue.js').unpack);
+testUnpack('./data-1.1/structs/port.js', 'port', require('../lib/ofp-1.1/structs/port.js').unpack);
+testUnpack('./data-1.1/structs/port-stats.js', 'port-stats', require('../lib/ofp-1.1/structs/port-stats.js').unpack);
+testUnpack('./data-1.1/structs/queue-props/', 'queue-prop', require('../lib/ofp-1.1/structs/queue-prop.js').unpack);
+testUnpack('./data-1.1/structs/queue-stats.js', 'queue-stats', require('../lib/ofp-1.1/structs/queue-stats.js').unpack);
+testUnpack('./data-1.1/structs/table-stats.js', 'table-stats', require('../lib/ofp-1.1/structs/table-stats.js').unpack);
+testUnpack('./data-1.1/messages/', 'message', require('../lib/ofp-1.1/message.js').unpack);
+testUnpack('./data-1.1/messages/stats/', 'message', require('../lib/ofp-1.1/message.js').unpack);
+
+/* OpenFlow - Unpack */
+testUnpack('./data-1.1/messages/', 'message', require('../lib/oflib.js').unpack);
+testUnpack('./data-1.1/messages/stats/', 'message', require('../lib/oflib.js').unpack);
