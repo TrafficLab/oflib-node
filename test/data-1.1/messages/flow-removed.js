@@ -56,9 +56,9 @@ module.exports.obj = {
                 },
                 "body" : {
                     "cookie" : new Buffer([0xaa, 0xbb, 0xcc, 0xdd, 0xaa, 0xbb, 0xcc, 0xdd]),
+                    "priority" : 511,
                     "reason" : 'OFPRR_IDLE_TIMEOUT',
                     "table_id" : 17,
-                    "priority" : 511,
                     "duration_sec" : 4096,
                     "duration_nsec" : 1,
                     "idle_timeout" : 3584,

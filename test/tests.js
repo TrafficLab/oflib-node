@@ -92,6 +92,22 @@ testUnpack('./data-1.1/structs/table-stats.js', 'table-stats', require('../lib/o
 testUnpack('./data-1.1/messages/', 'message', require('../lib/ofp-1.1/message.js').unpack);
 testUnpack('./data-1.1/messages/stats/', 'message', require('../lib/ofp-1.1/message.js').unpack);
 
-/* OpenFlow - Unpack */
+
+/* OpenFlow 1.0 - Unpack */
+testUnpack('./data-1.0/actions/', 'action', require('../lib/ofp-1.0/action.js').unpack);
+testUnpack('./data-1.0/structs/flow-stats.js', 'flow-stats', require('../lib/ofp-1.0/structs/flow-stats.js').unpack);
+testUnpack('./data-1.0/structs/match.js', 'match', require('../lib/ofp-1.0/structs/match.js').unpack);
+testUnpack('./data-1.0/structs/packet-queue.js', 'packet-queue', require('../lib/ofp-1.0/structs/packet-queue.js').unpack);
+testUnpack('./data-1.0/structs/phy-port.js', 'phy-port', require('../lib/ofp-1.0/structs/phy-port.js').unpack);
+testUnpack('./data-1.0/structs/port-stats.js', 'port-stats', require('../lib/ofp-1.0/structs/port-stats.js').unpack);
+testUnpack('./data-1.0/structs/queue-props/', 'queue-prop', require('../lib/ofp-1.0/structs/queue-prop.js').unpack);
+testUnpack('./data-1.0/structs/queue-stats.js', 'queue-stats', require('../lib/ofp-1.0/structs/queue-stats.js').unpack);
+testUnpack('./data-1.0/structs/table-stats.js', 'table-stats', require('../lib/ofp-1.0/structs/table-stats.js').unpack);
+testUnpack('./data-1.0/messages/', 'message', require('../lib/ofp-1.0/message.js').unpack);
+testUnpack('./data-1.0/messages/stats/', 'message', require('../lib/ofp-1.0/message.js').unpack);
+
+/* OpenFlow - version independent Unpack */
 testUnpack('./data-1.1/messages/', 'message', require('../lib/oflib.js').unpack);
 testUnpack('./data-1.1/messages/stats/', 'message', require('../lib/oflib.js').unpack);
+testUnpack('./data-1.0/messages/', 'message', require('../lib/oflib.js').unpack);
+testUnpack('./data-1.0/messages/stats/', 'message', require('../lib/oflib.js').unpack);
