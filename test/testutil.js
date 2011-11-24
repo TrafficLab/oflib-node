@@ -2,8 +2,6 @@
 
 var util = require('util');
 
-require('buffertools');
-
 module.exports = {
     "objEquals" : function objEquals(obj1, obj2) {
 
@@ -11,12 +9,14 @@ module.exports = {
 
         function objEquals(obj1, obj2, path) {
             if (Buffer.isBuffer(obj1) && Buffer.isBuffer(obj2)) {
-                if (obj1.equals(obj2)) {
-                    return {"equals" : true};
-                } else {
+                if (obj1.length != obj2.length) {
                     return {"error" : util.format("Buffers at \"%s\" differ (%s, %s).", path, obj1.toString('hex'), obj2.toString('hex'))};
                 }
+                for (var i=0; i<obj1.length; i++) {
+                    if (obj1[i] != obj2[i]) { return {"error" : util.format("Buffers at \"%s\" differ (%s, %s).", path, obj1.toString('hex'), obj2.toString('hex'))};}
+                }
 
+                return {"equals" : true};
             }
 
             if (typeof obj1 != 'object' ||

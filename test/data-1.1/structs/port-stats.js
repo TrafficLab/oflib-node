@@ -4,9 +4,6 @@
 
 "use strict";
 
-var Int64 = require('node-int64');
-
-
 module.exports.bin = [
                 0x00, 0x00, 0x00, 0x0d,                          // port_no = 13
                 0x00, 0x00, 0x00, 0x00,                          // pad
@@ -26,15 +23,15 @@ module.exports.bin = [
 
 module.exports.obj = {
                 "port_no" : 13,
-                "rx_packets" : new Int64(0, 1),
-                "tx_packets" : new Int64(0, 2),
-                "rx_bytes" : new Int64(0, 3),
-                "tx_bytes" : new Int64(0, 4),
-                "rx_dropped" : new Int64(0, 5),
-                "tx_dropped" : new Int64(0, 6),
-                "rx_errors" : new Int64(0, 7),
-                "tx_errors" : new Int64(0, 8),
-                "rx_over_err" : new Int64(0, 10),
-                "rx_crc_err" : new Int64(0, 11),
-                "collisions" : new Int64(0, 12)
+                "rx_packets" : [0, 1],
+                "tx_packets" : [0, 2],
+                "rx_bytes" : [0, 3],
+                "tx_bytes" : [0, 4],
+                "rx_dropped" : [0, 5],
+                "tx_dropped" : [0, 6],
+                "rx_errors" : [0, 7],
+                "tx_errors" : [0, 8],
+                "rx_over_err" : [0, 10],
+                "rx_crc_err" : [0, 11],
+                "collisions" : [0, 12]
             };

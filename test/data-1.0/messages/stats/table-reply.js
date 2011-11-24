@@ -4,8 +4,6 @@
 
 "use strict";
 
-var Int64 = require('node-int64');
-
 module.exports.bin = [
                0x01,                          // version = 1
                0x11,                          // type = 17
@@ -66,8 +64,8 @@ module.exports.obj = {
                                 "wildcards" : ['OFPFW_IN_PORT'],
                                 "max_entries" : 80,
                                 "active_count" : 48,
-                                "lookup_count" : new Int64(0, 5),
-                                "matched_count" : new Int64(0, 3)
+                                "lookup_count" : [0, 5],
+                                "matched_count" : [0, 3]
                             },
                             {
                                 "table_id" : 14,
@@ -75,8 +73,8 @@ module.exports.obj = {
                                 "wildcards" : ['OFPFW_IN_PORT'],
                                 "max_entries" : 80,
                                 "active_count" : 48,
-                                "lookup_count" : new Int64(0, 5),
-                                "matched_count" : new Int64(0, 3)
+                                "lookup_count" : [0, 5],
+                                "matched_count" : [0, 3]
                             },
                             {
                                 "table_id" : 15,
@@ -84,8 +82,8 @@ module.exports.obj = {
                                 "wildcards" : ['OFPFW_IN_PORT'],
                                 "max_entries" : 80,
                                 "active_count" : 48,
-                                "lookup_count" : new Int64(0, 5),
-                                "matched_count" : new Int64(0, 3)
+                                "lookup_count" : [0, 5],
+                                "matched_count" : [0, 3]
                             }
                         ]
                     }

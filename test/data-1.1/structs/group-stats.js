@@ -4,8 +4,6 @@
 
 "use strict";
 
-var Int64 = require('node-int64');
-
 module.exports.bin = [
                 0x00, 0x40,                                      // length = 64
                 0x00, 0x00,                                      // pad
@@ -23,16 +21,16 @@ module.exports.bin = [
 module.exports.obj = {
                 "group_id" : 34,
                 "ref_count" : 3,
-                "packet_count" : new Int64(0, 1),
-                "byte_count" : new Int64(0, 25),
+                "packet_count" : [0, 1],
+                "byte_count" : [0, 25],
                 "bucket_stats" : [
                     {
-                        "packet_count" : new Int64(26, 564295870), // 26 * 2^32 + 564295870 = 112233445566
-                        "byte_count" : new Int64(0, 123456)
+                        "packet_count" : [26, 564295870], // 26 * 2^32 + 564295870 = 112233445566
+                        "byte_count" : [0, 123456]
                     },
                     {
-                        "packet_count" : new Int64(26, 564295871), // 26 * 2^32 + 564295871 = 112233445567
-                        "byte_count" : new Int64(0, 123457)
+                        "packet_count" : [26, 564295871], // 26 * 2^32 + 564295871 = 112233445567
+                        "byte_count" : [0, 123457]
                     },
                 ]
             };

@@ -4,8 +4,6 @@
 
 "use strict";
 
-var Int64 = require('node-int64');
-
 module.exports.bin = [
                 0x01,                    // version = 1
                 0x0b,                    // type = 11
@@ -62,7 +60,7 @@ module.exports.obj = {
                     "duration_sec" : 4096,
                     "duration_nsec" : 1,
                     "idle_timeout" : 3584,
-                    "packet_count" : new Int64(0, 16),
-                    "byte_count" : new Int64(0, 18),
+                    "packet_count" : [0, 16],
+                    "byte_count" : [0, 18],
                 }
             };

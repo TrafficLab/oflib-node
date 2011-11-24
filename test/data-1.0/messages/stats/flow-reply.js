@@ -4,8 +4,6 @@
 
 "use strict";
 
-var Int64 = require('node-int64');
-
 module.exports.bin = [
                0x01,                          // version = 1
                0x11,                          // type = 17
@@ -80,8 +78,8 @@ module.exports.obj = {
                                 "priority" : 65535,
                                 "hard_timeout" : 255,
                                 "cookie" : new Buffer([0xaa, 0xaa, 0xbb, 0xbb, 0xaa, 0xaa, 0xbb, 0xbb]),
-                                "packet_count" : new Int64(0, 1),
-                                "byte_count" : new Int64(0, 25),
+                                "packet_count" : [0, 1],
+                                "byte_count" : [0, 25],
                                 "actions" : [
                                     {
                                         "header" : {"type" : 'OFPAT_SET_DL_SRC'},

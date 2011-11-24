@@ -4,8 +4,6 @@
 
 "use strict";
 
-var Int64 = require('node-int64');
-
 module.exports.bin = [
                0x01,                          // version = 1
                0x11,                          // type = 17
@@ -43,16 +41,16 @@ module.exports.obj = {
                             {
                                 "port_no" : 13,
                                 "queue_id" : 22,
-                                "tx_bytes" : new Int64(0, 10),
-                                "tx_packets" : new Int64(0, 20),
-                                "tx_errors" : new Int64(0, 30),
+                                "tx_bytes" : [0, 10],
+                                "tx_packets" : [0, 20],
+                                "tx_errors" : [0, 30],
                             },
                             {
                                 "port_no" : 13,
                                 "queue_id" : 23,
-                                "tx_bytes" : new Int64(0, 10),
-                                "tx_packets" : new Int64(0, 20),
-                                "tx_errors" : new Int64(0, 30),
+                                "tx_bytes" : [0, 10],
+                                "tx_packets" : [0, 20],
+                                "tx_errors" : [0, 30],
                             }
                         ]
                     }

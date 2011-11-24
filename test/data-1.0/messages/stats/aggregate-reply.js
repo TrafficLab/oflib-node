@@ -4,8 +4,6 @@
 
 "use strict";
 
-var Int64 = require('node-int64');
-
 module.exports.bin = [
                0x01,                          // version = 1
                0x11,                          // type = 17
@@ -31,8 +29,8 @@ module.exports.obj = {
                         "flags" : ['OFPSF_REPLY_MORE']
                     },
                     "body" : {
-                        "packet_count" : new Int64(0, 1),
-                        "byte_count" : new Int64(0, 2),
+                        "packet_count" : [0, 1],
+                        "byte_count" : [0, 2],
                         "flow_count" : 3,
                     }
                 }
