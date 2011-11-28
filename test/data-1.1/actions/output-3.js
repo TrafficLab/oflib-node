@@ -12,4 +12,9 @@ module.exports.bin = [
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // padding
     ];
 
+module.exports.obj = {
+                header : {type : 'OFPAT_OUTPUT'},
+                body : {port : 0xffffff01}
+            };
+
 module.exports.warnings = [];

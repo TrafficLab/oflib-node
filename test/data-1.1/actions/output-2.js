@@ -13,9 +13,9 @@ module.exports.bin = [
         ];
 
 module.exports.obj = {
-                "header" : {"type" : 'OFPAT_OUTPUT'},
-                "body" : {
-                    "port" : 'OFPP_CONTROLLER',
-                    "max_len" : 1138
+                header : {type : 'OFPAT_OUTPUT'},
+                body : {
+                    port : 'OFPP_CONTROLLER',
+                    max_len : 1138
                 }
             };

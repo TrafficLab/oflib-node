@@ -3,6 +3,18 @@
 var util = require('util');
 
 module.exports = {
+    "bufEquals" : function bufEquals(buf1, buf2, length) {
+        if (buf1.length < length || buf2.length < length) {
+            return {error : util.format('Buffers are too short (%s, %s).', buf1.toString('hex', 0, length), buf2.toString('hex', 0, length))}
+        }
+
+        for (var i=0; i<length; i++) {
+            if (buf1[i] != buf2[i]) { return {error : util.format('Buffers differ at %d (%s, %s).', i, buf1.toString('hex', 0, length), buf2.toString('hex', 0, length))}}
+        }
+
+        return {equals: true};
+    },
+
     "objEquals" : function objEquals(obj1, obj2) {
 
         return objEquals(obj1, obj2, "");
