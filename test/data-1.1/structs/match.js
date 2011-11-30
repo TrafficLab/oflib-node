@@ -15,7 +15,7 @@ module.exports.bin = [
                0x00, 0x00, 0x00, 0xff, 0xff, 0xff, // dl_dst_mask = "00:00:00:ff:ff:ff"
                0x00, 0x00,                         // dl_vlan (wildcarded)
                0x00,                               // dl_vlan_pcp (wildcarded)
-               0x00,                               // pad
+               0x00,                               // pad1
                0x08, 0x00,                         // dl_type = 2048 (0x800)
                0x00,                               // nw_tos (wildcarded)
                0x06,                               // nw_proto = 6
@@ -27,7 +27,7 @@ module.exports.bin = [
                0x00, 0x00,                         // tp_dst (wildcarded)
                0x00, 0x00, 0x00, 0x00,             // mpls_label (wildcarded)
                0x00,                               // mpls_tc (wildcarded)
-               0x00, 0x00, 0x00,                   // pad
+               0x00, 0x00, 0x00,                   // pad2
                0x11, 0x22, 0x33, 0x44, 0x00, 0x00, 0x00, 0x00,  // metadata = "1122334400000000"
                0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff   // metadata_mask = "00000000ffffffff"
         ];

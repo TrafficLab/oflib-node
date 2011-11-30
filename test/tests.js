@@ -148,9 +148,9 @@ testUnpack('./data-1.1/actions/', 'action', require('../lib/ofp-1.1/action.js').
 testUnpack('./data-1.1/instructions/', 'instruction', require('../lib/ofp-1.1/instruction.js').unpack);
 testUnpack('./data-1.1/structs/bucket.js', 'bucket', require('../lib/ofp-1.1/structs/bucket.js').unpack);
 testUnpack('./data-1.1/structs/bucket-counter.js', 'bucket-counter', require('../lib/ofp-1.1/structs/bucket-counter.js').unpack);
+testUnpack('./data-1.1/structs/flow-stats.js', 'flow-stats', require('../lib/ofp-1.1/structs/flow-stats.js').unpack);
 testUnpack('./data-1.1/structs/group-stats.js', 'group-stats', require('../lib/ofp-1.1/structs/group-stats.js').unpack);
 testUnpack('./data-1.1/structs/group-desc-stats.js', 'group-desc-stats', require('../lib/ofp-1.1/structs/group-desc-stats.js').unpack);
-testUnpack('./data-1.1/structs/flow-stats.js', 'flow-stats', require('../lib/ofp-1.1/structs/flow-stats.js').unpack);
 testUnpack('./data-1.1/structs/match.js', 'match', require('../lib/ofp-1.1/structs/match.js').unpack);
 testUnpack('./data-1.1/structs/packet-queue.js', 'packet-queue', require('../lib/ofp-1.1/structs/packet-queue.js').unpack);
 testUnpack('./data-1.1/structs/port.js', 'port', require('../lib/ofp-1.1/structs/port.js').unpack);
@@ -163,6 +163,19 @@ testUnpack('./data-1.1/messages/stats/', 'message', require('../lib/ofp-1.1/mess
 
 /* OpenFlow 1.1 - Pack */
 testPack('./data-1.1/actions/', 'action', require('../lib/ofp-1.1/action.js').pack);
+testPack('./data-1.1/instructions/', 'instruction', require('../lib/ofp-1.1/instruction.js').pack);
+testPack('./data-1.1/structs/bucket.js', 'bucket', require('../lib/ofp-1.1/structs/bucket.js').pack);
+testPack('./data-1.1/structs/bucket-counter.js', 'bucket-counter', require('../lib/ofp-1.1/structs/bucket-counter.js').pack);
+testPack('./data-1.1/structs/flow-stats.js', 'flow-stats', require('../lib/ofp-1.1/structs/flow-stats.js').pack);
+testPack('./data-1.1/structs/group-desc-stats.js', 'group-desc-stats', require('../lib/ofp-1.1/structs/group-desc-stats.js').pack);
+testPack('./data-1.1/structs/group-stats.js', 'group-stats', require('../lib/ofp-1.1/structs/group-stats.js').pack);
+testPack('./data-1.1/structs/match.js', 'match', require('../lib/ofp-1.1/structs/match.js').pack);
+testPack('./data-1.1/structs/packet-queue.js', 'packet-queue', require('../lib/ofp-1.1/structs/packet-queue.js').pack);
+testPack('./data-1.1/structs/port.js', 'port', require('../lib/ofp-1.1/structs/port.js').pack);
+testPack('./data-1.1/structs/port-stats.js', 'port-stats', require('../lib/ofp-1.1/structs/port-stats.js').pack);
+testPack('./data-1.1/structs/queue-props/', 'queue-prop', require('../lib/ofp-1.1/structs/queue-prop.js').pack);
+testPack('./data-1.1/structs/queue-stats.js', 'queue-stats', require('../lib/ofp-1.1/structs/queue-stats.js').pack);
+testPack('./data-1.1/structs/table-stats.js', 'table-stats', require('../lib/ofp-1.1/structs/table-stats.js').pack);
 
 
 /* OpenFlow 1.0 - Unpack */

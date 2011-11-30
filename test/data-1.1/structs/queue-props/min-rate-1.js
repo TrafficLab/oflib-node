@@ -13,6 +13,6 @@ module.exports.bin = [
         ];
 
 module.exports.obj = {
-                "header" : {"property" : 'OFPQT_MIN_RATE'},
-                "body" : {"rate" : 254}
+                header : {property : 'OFPQT_MIN_RATE'},
+                body : {rate : 254}
             };

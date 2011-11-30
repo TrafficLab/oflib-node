@@ -11,5 +11,5 @@ module.exports.bin = [
         ];
 
 module.exports.obj = {
-                "header" : {"property" : 'OFPQT_NONE'}
+                header : {property : 'OFPQT_NONE'}
             };
