@@ -24,23 +24,23 @@ module.exports.bin = [
             ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_PACKET_OUT',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_PACKET_OUT',
+                    xid : 1234567890
                 },
-                "body" : {
-                    "in_port" : 2,
-                    "actions" : [
+                body : {
+                    in_port : 2,
+                    actions : [
                         {
-                            "header" : {"type" : 'OFPAT_SET_DL_SRC'},
-                            "body" : {"dl_addr" : '12:34:56:78:9a:bc'}
+                            header : {type : 'OFPAT_SET_DL_SRC'},
+                            body : {dl_addr : '12:34:56:78:9a:bc'}
                         },
                         {
-                            "header" : {"type" : 'OFPAT_SET_NW_SRC'},
-                            "body" : {"nw_addr" : '192.168.1.1'}
+                            header : {type : 'OFPAT_SET_NW_SRC'},
+                            body : {nw_addr : '192.168.1.1'}
                         }
                     ],
-                    "data" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x55])
+                    data : new Buffer([0x11, 0x22, 0x33, 0x44, 0x55])
                 }
             };

@@ -16,7 +16,7 @@ module.exports.bin = [
                 0x00, 0x00, 0x10, 0x00,                         // duration_sec = 4096
                 0x00, 0x00, 0x00, 0x01,                         // duration_nsec = 1
                 0x0e, 0x00,                                     // idle_timeout = 3584
-                0x00, 0x00,                                     // pad
+                0x00, 0x00,                                     // pad2
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, // packet_count = 16
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, // byte_count = 18
                     0x00, 0x00,                         // type = 0
@@ -47,37 +47,37 @@ module.exports.bin = [
         ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_FLOW_REMOVED',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_FLOW_REMOVED',
+                    xid : 1234567890
                 },
-                "body" : {
-                    "cookie" : new Buffer([0xaa, 0xbb, 0xcc, 0xdd, 0xaa, 0xbb, 0xcc, 0xdd]),
-                    "priority" : 511,
-                    "reason" : 'OFPRR_IDLE_TIMEOUT',
-                    "table_id" : 17,
-                    "duration_sec" : 4096,
-                    "duration_nsec" : 1,
-                    "idle_timeout" : 3584,
-                    "packet_count" : [0, 16],
-                    "byte_count" : [0, 18],
-                    "match" : {
-                        "header" : {"type" : 'OFPMT_STANDARD'},
-                        "body" : {
-                            "in_port" : 16,
-                            "dl_src" : '11:22:33:44:00:00',
-                            "dl_src_mask" : '00:00:00:00:ff:ff',
-                            'dl_dst' : 'aa:bb:cc:00:00:00',
-                            "dl_dst_mask" : '00:00:00:ff:ff:ff',
-                            "dl_type" : 2048,
-                            "nw_proto" : 6,
-                            "nw_src" : '192.168.1.0',
-                            "nw_src_mask" : '0.0.0.255',
-                            "nw_dst" : '192.168.0.0',
-                            "nw_dst_mask" : '0.0.255.255',
-                            "metadata" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x00, 0x00, 0x00, 0x00]),
-                            "metadata_mask" : new Buffer([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff])
+                body : {
+                    cookie : new Buffer([0xaa, 0xbb, 0xcc, 0xdd, 0xaa, 0xbb, 0xcc, 0xdd]),
+                    priority : 511,
+                    reason : 'OFPRR_IDLE_TIMEOUT',
+                    table_id : 17,
+                    duration_sec : 4096,
+                    duration_nsec : 1,
+                    idle_timeout : 3584,
+                    packet_count : [0, 16],
+                    byte_count : [0, 18],
+                    match : {
+                        header : {type : 'OFPMT_STANDARD'},
+                        body : {
+                            in_port : 16,
+                            dl_src : '11:22:33:44:00:00',
+                            dl_src_mask : '00:00:00:00:ff:ff',
+                            dl_dst : 'aa:bb:cc:00:00:00',
+                            dl_dst_mask : '00:00:00:ff:ff:ff',
+                            dl_type : 2048,
+                            nw_proto : 6,
+                            nw_src : '192.168.1.0',
+                            nw_src_mask : '0.0.0.255',
+                            nw_dst : '192.168.0.0',
+                            nw_dst_mask : '0.0.255.255',
+                            metadata : new Buffer([0x11, 0x22, 0x33, 0x44, 0x00, 0x00, 0x00, 0x00]),
+                            metadata_mask : new Buffer([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff])
                         }
                     }
                 }

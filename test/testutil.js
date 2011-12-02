@@ -9,7 +9,7 @@ module.exports = {
         }
 
         for (var i=0; i<length; i++) {
-            if (buf1[i] != buf2[i]) { return {error : util.format('Buffers differ at %d (%s, %s).', i, buf1.toString('hex', 0, length), buf2.toString('hex', 0, length))}}
+            if (buf1[i] != buf2[i]) { return {error : util.format('Buffers differ at %d (%d, %d),  (%s, %s).', i, buf1[i], buf2[i], buf1.toString('hex', 0, length), buf2.toString('hex', 0, length))}}
         }
 
         return {equals: true};
@@ -25,7 +25,7 @@ module.exports = {
                     return {"error" : util.format("Buffers at \"%s\" differ (%s, %s).", path, obj1.toString('hex'), obj2.toString('hex'))};
                 }
                 for (var i=0; i<obj1.length; i++) {
-                    if (obj1[i] != obj2[i]) { return {"error" : util.format("Buffers at \"%s\" differ (%s, %s).", path, obj1.toString('hex'), obj2.toString('hex'))};}
+                    if (obj1[i] != obj2[i]) { return {"error" : util.format("Buffers at \"%s\" differ (%d, %d), (%s, %s).", path, obj1[i], obj2[i], obj1.toString('hex'), obj2.toString('hex'))};}
                 }
 
                 return {"equals" : true};

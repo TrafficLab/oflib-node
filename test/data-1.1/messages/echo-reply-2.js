@@ -13,10 +13,10 @@ module.exports.bin = [
         ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_ECHO_REPLY',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_ECHO_REPLY',
+                    xid : 1234567890
                 },
-                "body" : {"data" : new Buffer([0xaa, 0xbb, 0xcc, 0xdd, 0xee])}
+                body : {data : new Buffer([0xaa, 0xbb, 0xcc, 0xdd, 0xee])}
             };

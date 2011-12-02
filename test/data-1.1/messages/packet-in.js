@@ -20,17 +20,17 @@ module.exports.bin = [
             ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_PACKET_IN',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_PACKET_IN',
+                    xid : 1234567890
                 },
-                "body" : {
-                    "buffer_id" : 19,
-                    "in_port" : 2,
-                    "total_len" : 1024,
-                    "reason" : 'OFPR_ACTION',
-                    "table_id" : 42,
-                    "data" : new Buffer([0x11, 0x22, 0x33, 0x44, 0x55])
+                body : {
+                    buffer_id : 19,
+                    in_port : 2,
+                    total_len : 1024,
+                    reason : 'OFPR_ACTION',
+                    table_id : 42,
+                    data : new Buffer([0x11, 0x22, 0x33, 0x44, 0x55])
                 }
             };

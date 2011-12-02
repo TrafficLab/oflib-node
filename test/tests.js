@@ -27,7 +27,12 @@ function testUnpack(path, name, fun) {
 
         var test = require(file);
 
-        var unpack = fun(new Buffer(test.bin), 0);
+        var offset = 42;
+
+        var buf = new Buffer(test.bin.length + offset);
+        (new Buffer(test.bin)).copy(buf, offset);
+
+        var unpack = fun(buf, offset);
 
         if ('warnings' in test) {
             // negative testcase for warnings
@@ -51,7 +56,7 @@ function testUnpack(path, name, fun) {
             // positive testcase
             var expect = {};
             expect[name] = test.obj;
-            expect.offset = test.bin.length;
+            expect.offset = test.bin.length + offset;
 
             if ('error' in unpack) {
                 process.stderr.write(' ERROR.\n');
@@ -90,8 +95,10 @@ function testPack(path, name, fun) {
 
         var test = require(file);
 
+        var offset = 42;
+
         var buf = new Buffer(65535);
-        var pack = fun(test.obj, buf, 0);
+        var pack = fun(test.obj, buf, offset);
 
         if ('warnings' in test) {
             // negative testcase for warnings
@@ -122,12 +129,12 @@ function testPack(path, name, fun) {
                 process.stderr.write(' ERROR.\n');
                 process.stderr.write(util.format("%j\n", pack.warnings));
             } else {
-                if (test.bin.length != pack.offset) {
+                if (test.bin.length + offset != pack.offset) {
                     process.stderr.write(' ERROR.\n');
                     process.stderr.write(util.format('Pack length differs (%d, %d).', test.bin.length, pack.offset));
                 } else {
 
-                    var res = testutil.bufEquals(buf, new Buffer(test.bin), pack.offset);
+                    var res = testutil.bufEquals(buf.slice(offset), new Buffer(test.bin), pack.offset - offset);
 
                     if ('error' in res) {
                         process.stderr.write(' ERROR.\n');
@@ -141,7 +148,6 @@ function testPack(path, name, fun) {
     });
 
 }
-
 
 /* OpenFlow 1.1 - Unpack */
 testUnpack('./data-1.1/actions/', 'action', require('../lib/ofp-1.1/action.js').unpack);
@@ -176,6 +182,8 @@ testPack('./data-1.1/structs/port-stats.js', 'port-stats', require('../lib/ofp-1
 testPack('./data-1.1/structs/queue-props/', 'queue-prop', require('../lib/ofp-1.1/structs/queue-prop.js').pack);
 testPack('./data-1.1/structs/queue-stats.js', 'queue-stats', require('../lib/ofp-1.1/structs/queue-stats.js').pack);
 testPack('./data-1.1/structs/table-stats.js', 'table-stats', require('../lib/ofp-1.1/structs/table-stats.js').pack);
+testPack('./data-1.1/messages/', 'message', require('../lib/ofp-1.1/message.js').pack);
+testPack('./data-1.1/messages/stats/', 'message', require('../lib/ofp-1.1/message.js').pack);
 
 
 /* OpenFlow 1.0 - Unpack */

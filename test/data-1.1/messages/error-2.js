@@ -14,13 +14,13 @@ module.exports.bin = [
         ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_ERROR',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_ERROR',
+                    xid : 1234567890
                 },
-                "body" : {
-                    "type" : 'OFPET_FLOW_MOD_FAILED',
-                    "code" : 'OFPFMFC_OVERLAP'
+                body : {
+                    type : 'OFPET_FLOW_MOD_FAILED',
+                    code : 'OFPFMFC_OVERLAP'
                 }
             };

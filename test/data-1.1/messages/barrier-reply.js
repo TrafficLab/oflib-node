@@ -10,9 +10,9 @@ module.exports.bin = [
         ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_BARRIER_REPLY',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_BARRIER_REPLY',
+                    xid : 1234567890
                 }
             };

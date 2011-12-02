@@ -51,41 +51,41 @@ module.exports.bin = [
             ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_FEATURES_REPLY',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_FEATURES_REPLY',
+                    xid : 1234567890
                 },
-                "body" : {
-                    "datapath_id" : "1122334455667788",
-                    "n_buffers" : 65536,
-                    "n_tables" : 240,
-                    "capabilities" : ['OFPC_FLOW_STATS', 'OFPC_TABLE_STATS', 'OFPC_PORT_STATS', 'OFPC_GROUP_STATS',
+                body : {
+                    datapath_id : '1122334455667788',
+                    n_buffers : 65536,
+                    n_tables : 240,
+                    capabilities : ['OFPC_FLOW_STATS', 'OFPC_TABLE_STATS', 'OFPC_PORT_STATS', 'OFPC_GROUP_STATS',
                                       'OFPC_IP_REASM', 'OFPC_QUEUE_STATS', 'OFPC_ARP_MATCH_IP'],
-                    "ports" : [
+                    ports : [
                         {
-                            "port_no" : 18,
-                            "hw_addr" : '11:22:11:33:11:44',
-                            "name" : 'eth1',
-                            "config" : ['OFPPC_NO_FWD', 'OFPPC_NO_PACKET_IN'],
-                            "state" : ['OFPPS_LIVE'],
-                            "curr" : ['OFPPF_10GB_FD'],
-                            "advertised" : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD'],
-                            "supported" : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD', 'OFPPF_100MB_FD', 'OFPPF_100MB_HD'],
-                            "curr_speed" : 128,
-                            "max_speed" : 256
+                            port_no : 18,
+                            hw_addr : '11:22:11:33:11:44',
+                            name : 'eth1',
+                            config : ['OFPPC_NO_FWD', 'OFPPC_NO_PACKET_IN'],
+                            state : ['OFPPS_LIVE'],
+                            curr : ['OFPPF_10GB_FD'],
+                            advertised : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD'],
+                            supported : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD', 'OFPPF_100MB_FD', 'OFPPF_100MB_HD'],
+                            curr_speed : 128,
+                            max_speed : 256
                         },
                         {
-                            "port_no" : 19,
-                            "hw_addr" : '11:22:11:33:11:55',
-                            "name" : 'eth1',
-                            "config" : ['OFPPC_NO_FWD', 'OFPPC_NO_PACKET_IN'],
-                            "state" : ['OFPPS_LIVE'],
-                            "curr" : ['OFPPF_10GB_FD'],
-                            "advertised" : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD'],
-                            "supported" : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD', 'OFPPF_100MB_FD', 'OFPPF_100MB_HD'],
-                            "curr_speed" : 128,
-                            "max_speed" : 256
+                            port_no : 19,
+                            hw_addr : '11:22:11:33:11:55',
+                            name : 'eth1',
+                            config : ['OFPPC_NO_FWD', 'OFPPC_NO_PACKET_IN'],
+                            state : ['OFPPS_LIVE'],
+                            curr : ['OFPPF_10GB_FD'],
+                            advertised : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD'],
+                            supported : ['OFPPF_10GB_FD', 'OFPPF_1GB_FD', 'OFPPF_1GB_HD', 'OFPPF_100MB_FD', 'OFPPF_100MB_HD'],
+                            curr_speed : 128,
+                            max_speed : 256
                         }
                     ]
                 }

@@ -15,13 +15,13 @@ module.exports.bin = [
         ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_TABLE_MOD',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_TABLE_MOD',
+                    xid : 1234567890
                 },
-                "body" : {
-                    "table_id" : 19,
-                    "config" : 'OFPTC_TABLE_MISS_DROP'
+                body : {
+                    table_id : 19,
+                    config : ['OFPTC_TABLE_MISS_DROP']
                 }
         };

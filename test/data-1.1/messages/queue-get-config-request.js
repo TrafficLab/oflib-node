@@ -14,7 +14,7 @@ module.exports.bin = [
             ];
 
 module.exports.obj = {
-                "version" : "1.1",
+                "version" : '1.1',
                 "header" : {
                     "type" : 'OFPT_QUEUE_GET_CONFIG_REQUEST',
                     "xid" : 1234567890

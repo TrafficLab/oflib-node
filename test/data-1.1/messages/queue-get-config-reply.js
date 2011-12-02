@@ -30,29 +30,29 @@ module.exports.bin = [
             ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_QUEUE_GET_CONFIG_REPLY',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_QUEUE_GET_CONFIG_REPLY',
+                    xid : 1234567890
                 },
-                "body" : {
-                    "port" : 18,
-                    "queues" : [
+                body : {
+                    port : 18,
+                    queues : [
                         {
-                            "queue_id" : 16,
-                            "properties" : [
+                            queue_id : 16,
+                            properties : [
                                 {
-                                    "header" : {"property" : 'OFPQT_MIN_RATE'},
-                                    "body" : {"rate" : 254}
+                                    header : {property : 'OFPQT_MIN_RATE'},
+                                    body : {rate : 254}
                                 }
                             ]
                         },
                         {
-                            "queue_id" : 18,
-                            "properties" : [
+                            queue_id : 18,
+                            properties : [
                                 {
-                                    "header" : {"property" : 'OFPQT_MIN_RATE'},
-                                    "body" : {"rate" : 252}
+                                    header : {property : 'OFPQT_MIN_RATE'},
+                                    body : {rate : 252}
                                 }
                             ]
                         }

@@ -16,7 +16,7 @@ module.exports.bin = [
                    0x00, 0x00, 0x00,                               // pad
                    0x00, 0x00, 0x00, 0x08,                         // out_port = 8,
                    0xff, 0xff, 0xff, 0xff,                         // out_group = 0 (disabled)
-                   0x00, 0x00, 0x00, 0x00,                         // pad
+                   0x00, 0x00, 0x00, 0x00,                         // pad2
                    0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, // cookie = "1122334455667788"
                    0xaa, 0xab, 0xac, 0xad, 0xae, 0xaf, 0xba, 0xbb, // cookie_mask = "aaabacadaeafbabb"
                      0x00, 0x00,                         // type = 0
@@ -47,7 +47,7 @@ module.exports.bin = [
         ];
 
 module.exports.obj = {
-                "version" : "1.1",
+                "version" : '1.1',
                 "header" : {
                     "type" : 'OFPT_STATS_REQUEST',
                     "xid" : 1234567890

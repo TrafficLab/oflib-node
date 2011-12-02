@@ -147,22 +147,22 @@ module.exports.bin = [
         ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_STATS_REPLY',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_STATS_REPLY',
+                    xid : 1234567890
                 },
-                "body" : {
-                    "header" : {
-                        "type" : 'OFPST_DESC',
-                        "flags" : ['OFPSF_REPLY_MORE']
+                body : {
+                    header : {
+                        type : 'OFPST_DESC',
+                        flags : ['OFPSF_REPLY_MORE']
                     },
-                    "body" : {
-                        "mfr_desc" : 'Manufacturer description',
-                        "hw_desc" : 'Hardware description',
-                        "sw_desc" : 'Software description',
-                        "serial_num" : 'Serial number',
-                        "dp_desc" : 'Datapath description'
+                    body : {
+                        mfr_desc : 'Manufacturer description',
+                        hw_desc : 'Hardware description',
+                        sw_desc : 'Software description',
+                        serial_num : 'Serial number',
+                        dp_desc : 'Datapath description'
                     }
                 }
         };

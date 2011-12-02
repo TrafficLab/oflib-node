@@ -15,14 +15,14 @@ module.exports.bin = [
         ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_ERROR',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_ERROR',
+                    xid : 1234567890
                 },
-                "body" : {
-                    "type" : 'OFPET_BAD_ACTION',
-                    "code" : 'OFPBAC_BAD_LEN',
-                    "data" : new Buffer([0xab, 0xbc, 0xcd, 0xde])
+                body : {
+                    type : 'OFPET_BAD_ACTION',
+                    code : 'OFPBAC_BAD_LEN',
+                    data : new Buffer([0xab, 0xbc, 0xcd, 0xde])
                 }
             };

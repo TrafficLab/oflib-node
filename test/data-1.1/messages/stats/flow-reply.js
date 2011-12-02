@@ -62,7 +62,7 @@ module.exports.bin = [
                          0x00, 0x01,        // type = 1
                          0x00, 0x08,        // length = 8
                          0x0d,              // table_id = 13
-                         0x01, 0xe2, 0x40,  // pad
+                         0x00, 0x00, 0x00,  // pad
                    0x00, 0xb0,                                      // length = 176
                    0x11,                                            // table_id = 17
                    0x00,                                            // pad
@@ -113,11 +113,11 @@ module.exports.bin = [
                          0x00, 0x01,        // type = 1
                          0x00, 0x08,        // length = 8
                          0x0d,              // table_id = 13
-                         0x01, 0xe2, 0x40   // pad
+                         0x00, 0x00, 0x00   // pad
         ];
 
 module.exports.obj = {
-                "version" : "1.1",
+                "version" : '1.1',
                 "header" : {
                     "type" : 'OFPT_STATS_REPLY',
                     "xid" : 1234567890

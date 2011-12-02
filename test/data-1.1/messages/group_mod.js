@@ -40,41 +40,41 @@ module.exports.bin = [
             ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_GROUP_MOD',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_GROUP_MOD',
+                    xid : 1234567890
                 },
-                "body" : {
-                    "command" : "OFPGC_ADD",
-                    "type" : "OFPGT_SELECT",
-                    "group_id" : 20,
-                    "buckets" : [
+                body : {
+                    command : 'OFPGC_ADD',
+                    type : 'OFPGT_SELECT',
+                    group_id : 20,
+                    buckets : [
                         {
-                            "weight" : 258,
-                            "watch_group" : 65535,
-                            "actions" : [
+                            weight : 258,
+                            watch_group : 65535,
+                            actions : [
                                 {
-                                    "header" : {"type" : 'OFPAT_SET_DL_SRC'},
-                                    "body" : {"dl_addr" : '12:34:56:78:9a:bc'}
+                                    header : {type : 'OFPAT_SET_DL_SRC'},
+                                    body : {dl_addr : '12:34:56:78:9a:bc'}
                                 },
                                 {
-                                    "header" : {"type" : 'OFPAT_SET_NW_SRC'},
-                                    "body" : {"nw_addr" : '192.168.1.1'}
+                                    header : {type : 'OFPAT_SET_NW_SRC'},
+                                    body : {nw_addr : '192.168.1.1'}
                                 }
                             ]
                         },
                         {
-                            "weight" : 258,
-                            "watch_group" : 65535,
-                            "actions" : [
+                            weight : 258,
+                            watch_group : 65535,
+                            actions : [
                                 {
-                                    "header" : {"type" : 'OFPAT_SET_DL_SRC'},
-                                    "body" : {"dl_addr" : '12:34:56:78:9a:bc'}
+                                    header : {type : 'OFPAT_SET_DL_SRC'},
+                                    body : {dl_addr : '12:34:56:78:9a:bc'}
                                 },
                                 {
-                                    "header" : {"type" : 'OFPAT_SET_NW_SRC'},
-                                    "body" : {"nw_addr" : '192.168.1.1'}
+                                    header : {type : 'OFPAT_SET_NW_SRC'},
+                                    body : {nw_addr : '192.168.1.1'}
                                 }
                             ]
                         }

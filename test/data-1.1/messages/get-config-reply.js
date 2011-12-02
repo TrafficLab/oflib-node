@@ -14,13 +14,13 @@ module.exports.bin = [
             ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_GET_CONFIG_REPLY',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_GET_CONFIG_REPLY',
+                    xid : 1234567890
                 },
-                "body" : {
-                    "flags" : ['OFPC_FRAG_REASM', 'OFPC_INVALID_TTL_TO_CONTROLLER'],
-                    "miss_send_len" : 256
+                body : {
+                    flags : ['OFPC_FRAG_REASM', 'OFPC_INVALID_TTL_TO_CONTROLLER'],
+                    miss_send_len : 256
                 }
             };

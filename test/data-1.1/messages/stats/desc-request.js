@@ -15,15 +15,15 @@ module.exports.bin = [
         ];
 
 module.exports.obj = {
-                "version" : "1.1",
-                "header" : {
-                    "type" : 'OFPT_STATS_REQUEST',
-                    "xid" : 1234567890
+                version : '1.1',
+                header : {
+                    type : 'OFPT_STATS_REQUEST',
+                    xid : 1234567890
                 },
-                "body" : {
-                    "header" : {
-                        "type" : 'OFPST_DESC',
-                        "flags" : []
+                body : {
+                    header : {
+                        type : 'OFPST_DESC',
+                        flags : []
                     }
                 }
         };
