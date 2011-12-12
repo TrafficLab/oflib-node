@@ -190,3 +190,7 @@ testUnpack('./data-1.1/messages/',                 require('../lib/oflib.js'));
 testUnpack('./data-1.1/messages/stats/',           require('../lib/oflib.js'));
 testUnpack('./data-1.0/messages/',                 require('../lib/oflib.js'));
 testUnpack('./data-1.0/messages/stats/',           require('../lib/oflib.js'));
+
+/* OpenFlow - version independent Pack */
+testPack('./data-1.1/messages/',                   require('../lib/oflib.js'));
+testPack('./data-1.1/messages/stats/',             require('../lib/oflib.js'));
